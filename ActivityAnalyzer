@@ -16,3 +16,4 @@ df = pd.read_csv('C:/Users/Carsten/Documents/DummyData.csv')
 
 axs = df.plot.area(figsize=(8, 4), subplots=True, x="Datetime(utc)")
 plt.show()
+
