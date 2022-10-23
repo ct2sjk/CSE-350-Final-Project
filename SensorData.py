@@ -80,7 +80,7 @@ class sensorData:
         self.SDSize = 0
         self.MDSize = 0
 
-    def switcher(self, DataSet):
+    def switcherSum(self, DataSet):
         sum = 0.0
         highest = 0.0
         lowest = 0.0
@@ -152,8 +152,14 @@ class sensorData:
                     iter += 1
                     returnData = [sum, highest, lowest]
         return returnData
-
-        
+    
+    def string2int(self, string):
+        string = string.lower()
+        match string:
+            case 'true':
+                return 1
+            case 'false':
+                return 0       
 
     def recursiveSearch(self, dateS, timeS, index=0):
         if index >= self.SDSize:
@@ -171,8 +177,10 @@ class sensorData:
         df = df.reset_index()
         ct = 0
         for index, row in df.iterrows():
-            sp = sensorPoint(row['Date'], row['Time'], row['Temp'],
-                             row['ACCMagnitude'], row['OnWrist'], row['StepCount'], row['Rest'])
+            date, time = row['Datetime(utc)'].split('T',1)
+            onWrist = self.string2int(row['On Wrist'])
+            sp = sensorPoint(date, time, row['Temp avg'],
+                             row['Acc magnitude avg'], onWrist, row['Steps count'], row['Rest'])
             self.SDarr.append(sp)
             ct+=1
             
