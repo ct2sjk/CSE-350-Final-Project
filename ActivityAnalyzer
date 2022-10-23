@@ -1,0 +1,18 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv('C:/Users/Carsten/Documents/DummyData.csv')
+## df['Datetime(utc)'] = pd.to_datetime('Datetime(utc)')
+### Datetime(utc)            object
+### Timezone (minutes)        int64
+### Unix Timestamp (UTC)     object
+### Acc magnitude avg       float64
+### Eda avg                 float64
+### Temp avg                float64
+### Movement Intensity        int64
+### Steps count               int64
+### Rest                      int64
+### On Wrist                   bool
+
+axs = df.plot.area(figsize=(8, 4), subplots=True, x="Datetime(utc)")
+plt.show()
