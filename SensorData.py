@@ -32,8 +32,8 @@ class graphData:
                         for y in range(self.SDSize)]
         self.ACCMagArr = [[0 for x in range(self.arrWidth)]
                           for y in range(self.SDSize)]
-        self.onWristArr = [
-            [0 for x in range(self.arrWidth)] for y in range(self.SDSize)]
+        self.onWristArr = [[0 for x in range(self.arrWidth)]
+                           for y in range(self.SDSize)]
         self.stepCtArr = [[0 for x in range(self.arrWidth)]
                           for y in range(self.SDSize)]
         self.restArr = [[0 for x in range(self.arrWidth)]
@@ -85,7 +85,7 @@ class sensorData:
         highest = 0.0
         lowest = 0.0
         iter = 0
-        returnData = [sum,highest,lowest]
+        returnData = [sum, highest, lowest]
         match DataSet:
             case 'Temp':
                 for obj in self.SDarr:
@@ -152,14 +152,13 @@ class sensorData:
                     iter += 1
                     returnData = [sum, highest, lowest]
         return returnData
-    
-    def string2int(self, string):
-        string = string.lower()
-        match string:
-            case 'true':
+
+    def bool2int(self, val):
+        match val:
+            case True:
                 return 1
-            case 'false':
-                return 0       
+            case False:
+                return 0
 
     def recursiveSearch(self, dateS, timeS, index=0):
         if index >= self.SDSize:
@@ -177,13 +176,13 @@ class sensorData:
         df = df.reset_index()
         ct = 0
         for index, row in df.iterrows():
-            date, time = row['Datetime(utc)'].split('T',1)
-            onWrist = self.string2int(row['On Wrist'])
+            date, time = row['Datetime(utc)'].split('T', 1)
+            onWrist = self.bool2int(row['On Wrist'])
             sp = sensorPoint(date, time, row['Temp avg'],
                              row['Acc magnitude avg'], onWrist, row['Steps count'], row['Rest'])
             self.SDarr.append(sp)
-            ct+=1
-            
+            ct += 1
+
         self.SDSize = ct + 1
 
     def compileMeta(self):
@@ -194,19 +193,20 @@ class sensorData:
             sp = sensorPoint(row['DateTimeUTC'], row['TimezoneM'], row['App'],
                              row['AppVersion'], row['OS'], row['OSVersion'], row['GTCS'])
             self.MDarr.append(sp)
-            ct+=1
+            ct += 1
         self.MDSize = ct + 1
 
     def compileGraphData(self):
         gd = graphData(self.SDarr, self.SDSize)
+        gd.compileGraph()
         return gd
 
     def summarize(self, DataSet):
-        returnedData = [0.0, 0.0, 0.0] 
-        returnedData = self.switcher(DataSet)
+        returnedData = [0.0, 0.0, 0.0]
+        returnedData = self.switcherSum(DataSet)
         rSum = returnedData[0]
         rangeU = returnedData[1]
-        rangeL = returnedData[3]
+        rangeL = returnedData[2]
         average = rSum / self.SDSize
         if DataSet == 'OnWrist':
             average = round(average)
@@ -235,3 +235,10 @@ class sensorData:
         restAvrg = restAvrg / size
 
         return tempAvrg, ACCMagAvrg, onWristAvrg, stepCtAvrg, restAvrg
+
+if __name__ == '__main__':
+    sd = sensorData('DummyData.csv', 'DummyData.csv')
+    sd.compileSensor()
+    print(sd.summarize('OnWrist'))
+    gd = sd.compileGraphData()
+    print(gd.ACCMagArr)
