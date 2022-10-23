@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 
 
 class metaData:
@@ -27,41 +28,61 @@ class graphData:
     def __init__(self, SDarr, SDSize):
         self.SDarr = SDarr
         self.SDSize = SDSize
-        self.arrWidth = 3
-        self.tempArr = [[0 for x in range(self.arrWidth)]
-                        for y in range(self.SDSize)]
-        self.ACCMagArr = [[0 for x in range(self.arrWidth)]
-                          for y in range(self.SDSize)]
-        self.onWristArr = [[0 for x in range(self.arrWidth)]
-                           for y in range(self.SDSize)]
-        self.stepCtArr = [[0 for x in range(self.arrWidth)]
-                          for y in range(self.SDSize)]
-        self.restArr = [[0 for x in range(self.arrWidth)]
-                        for y in range(self.SDSize)]
+        self.dfTemp = pd.DataFrame()
+        self.dfAcc = pd.DataFrame()
+        self.dfOnWirst = pd.DataFrame()
+        self.dfStepCt = pd.DataFrame()
+        self.dfRest = pd.DataFrame()
 
     def switcher(self, DataSet):
         iter = 0
+        d = []
         match DataSet:
             case 'Temp':
                 for obj in self.SDarr:
-                    self.tempArr[iter] = [obj.date, obj.time, obj.temp]
+                    d.append({'Date': obj.date,
+                              'Time': obj.time, 
+                              'Temp': obj.temp
+
+                              })
                     iter += 1
+                self.dfTemp = pd.DataFrame(d)
             case 'ACCMagnitude':
                 for obj in self.SDarr:
-                    self.ACCMagArr[iter] = [obj.date, obj.time, obj.ACCMag]
+                    d.append({'Date': obj.date,
+                              'Time': obj.time, 
+                              'Temp': obj.ACCMag
+
+                              })
                     iter += 1
+                self.dfTemp = pd.DataFrame(d)
             case 'OnWrist':
                 for obj in self.SDarr:
-                    self.onWristArr[iter] = [obj.date, obj.time, obj.onWrist]
+                    d.append({'Date': obj.date,
+                              'Time': obj.time, 
+                              'Temp': obj.onWrist
+
+                              })
                     iter += 1
+                self.dfTemp = pd.DataFrame(d)
             case 'StepCount':
                 for obj in self.SDarr:
-                    self.stepCtArr[iter] = [obj.date, obj.time, obj.stepCt]
+                    d.append({'Date': obj.date,
+                              'Time': obj.time, 
+                              'Temp': obj.stepCt
+
+                              })
                     iter += 1
+                self.dfTemp = pd.DataFrame(d)
             case 'Rest':
                 for obj in self.SDarr:
-                    self.restArr[iter] = [obj.date, obj.time, obj.rest]
+                    d.append({'Date': obj.date,
+                              'Time': obj.time, 
+                              'Temp': obj.rest
+
+                              })
                     iter += 1
+                self.dfTemp = pd.DataFrame(d)
 
     def compileGraph(self):
         self.switcher('Temp')
@@ -236,9 +257,10 @@ class sensorData:
 
         return tempAvrg, ACCMagAvrg, onWristAvrg, stepCtAvrg, restAvrg
 
+
 if __name__ == '__main__':
     sd = sensorData('DummyData.csv', 'DummyData.csv')
     sd.compileSensor()
     print(sd.summarize('OnWrist'))
     gd = sd.compileGraphData()
-    print(gd.ACCMagArr)
+    print(gd.dfTemp)
