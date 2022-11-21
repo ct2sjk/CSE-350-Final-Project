@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-
+from datetime import *
 
 class metaData:
     def __init__(self, DateTimeUTC, TimezoneM, App, AppVersion, OS, OSVersion, GTCS):
@@ -184,13 +184,29 @@ class sensorData:
     def recursiveSearch(self, dateS, timeS, index=0):
         if index >= self.SDSize:
             return False
-        if self.SDarr[index].date == dateS and self.SDarr[index].time >= timeS:
-            if self.SDarr[index-1].time < timeS or self.SDarr[index-1].date < dateS:
+        y,m,d = [int(x) for x in dateS.split('-')]
+        h,mi,s = [int(x) for x in timeS.split(':')]
+        dtS = datetime(y,m,d)
+        tiS = datetime(hour=h,minute=mi,second=s)
+
+        if self.parseDate(self.SDarr[index].date) == dtS and self.parseTime(self.SDarr[index].time) >= tiS:
+            if self.parseTime(self.SDarr[index-1].time) < tiS or self.parseDate(self.SDarr[index-1].date) < dtS:
                 return index
             else:
                 return self.recursiveSearch(dateS, timeS, index-1)
         else:
             return self.recursiveSearch(dateS, timeS, index+1)
+    def parseDate(date):
+        y,m,d = [int(x) for x in date.split('-')]
+        da = datetime(y,m,d)
+        return da
+    def parseTime(time):
+        time.replace('Z','')
+        h,mi,s = [int(x) for x in date.split(':')]
+        ti = datetime(hour=h, minute=mi,second=s)
+        return ti
+
+        
 
     def compileSensor(self):
         df = pd.read_csv(self.summaryFile)
@@ -239,9 +255,15 @@ class sensorData:
         onWristAvrg = 0
         stepCtAvrg = 0
         restAvrg = 0
+
+        y,m,d = [int(x) for x in DateE.split('-')]
+        h,mi,s = [int(x) for x in TimeE.split(':')]
+        dtE = datetime(y,m,d)
+        tiE = datetime(hour=h,minute=mi,second=s)
+
         indexS = self.recursiveSearch(DateS, TimeS)
         index = indexS
-        while self.SDarr[index].date < DateE and self.SDarr[index].time < TimeE:
+        while self.parseDate(self.SDarr[index].date) < dtE and self.parseTime(self.SDarr[index].time) < tiE:
             tempAvrg += self.SDarr[index].temp
             ACCMagAvrg += self.SDarr[index].ACCMag
             onWristAvrg += self.SDarr[index].onWrist
@@ -262,5 +284,6 @@ if __name__ == '__main__':
     sd = sensorData('DummyData.csv', 'DummyData.csv')
     sd.compileSensor()
     print(sd.summarize('OnWrist'))
+    print(sd.aggregate('2019-09-20','2019-09-20','11:50:00', '11:52:00'))
     gd = sd.compileGraphData()
     print(gd.dfTemp)
