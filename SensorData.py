@@ -55,7 +55,7 @@ class graphData:
 
                               })
                     iter += 1
-                self.dfTemp = pd.DataFrame(d)
+                self.dfAcc = pd.DataFrame(d)
             case 'OnWrist':
                 for obj in self.SDarr:
                     d.append({'Date': obj.date,
@@ -64,7 +64,7 @@ class graphData:
 
                               })
                     iter += 1
-                self.dfTemp = pd.DataFrame(d)
+                self.dfOnWirst = pd.DataFrame(d)
             case 'StepCount':
                 for obj in self.SDarr:
                     d.append({'Date': obj.date,
@@ -73,7 +73,7 @@ class graphData:
 
                               })
                     iter += 1
-                self.dfTemp = pd.DataFrame(d)
+                self.dfStepCt = pd.DataFrame(d)
             case 'Rest':
                 for obj in self.SDarr:
                     d.append({'Date': obj.date,
@@ -82,7 +82,7 @@ class graphData:
 
                               })
                     iter += 1
-                self.dfTemp = pd.DataFrame(d)
+                self.dfRest = pd.DataFrame(d)
 
     def compileGraph(self):
         self.switcher('Temp')
@@ -186,27 +186,21 @@ class sensorData:
             return False
         y,m,d = [int(x) for x in dateS.split('-')]
         h,mi,s = [int(x) for x in timeS.split(':')]
-        dtS = datetime(y,m,d)
-        tiS = datetime(hour=h,minute=mi,second=s)
+        dtS = datetime(y,m,d,h,mi,s)
 
-        if self.parseDate(self.SDarr[index].date) == dtS and self.parseTime(self.SDarr[index].time) >= tiS:
-            if self.parseTime(self.SDarr[index-1].time) < tiS or self.parseDate(self.SDarr[index-1].date) < dtS:
+        if self.parseDateTime(self.SDarr[index].date,self.SDarr[index].time) == dtS and self.parseDateTime(self.SDarr[index].date,self.SDarr[index].time) >= dtS:
+            if self.parseDateTime(self.SDarr[index-1].date,self.SDarr[index-1].time) < dtS or self.parseDateTime(self.SDarr[index].date,self.SDarr[index].time) == dtS:
                 return index
             else:
                 return self.recursiveSearch(dateS, timeS, index-1)
         else:
             return self.recursiveSearch(dateS, timeS, index+1)
-    def parseDate(date):
+    def parseDateTime(self,date,time):
+        time = time.replace('Z','')
         y,m,d = [int(x) for x in date.split('-')]
-        da = datetime(y,m,d)
-        return da
-    def parseTime(time):
-        time.replace('Z','')
-        h,mi,s = [int(x) for x in date.split(':')]
-        ti = datetime(hour=h, minute=mi,second=s)
-        return ti
-
-        
+        h,mi,s = [int(x) for x in time.split(':')]
+        dati = datetime(y,m,d,h,mi,s)
+        return dati       
 
     def compileSensor(self):
         df = pd.read_csv(self.summaryFile)
@@ -258,19 +252,18 @@ class sensorData:
 
         y,m,d = [int(x) for x in DateE.split('-')]
         h,mi,s = [int(x) for x in TimeE.split(':')]
-        dtE = datetime(y,m,d)
-        tiE = datetime(hour=h,minute=mi,second=s)
+        dtE = datetime(y,m,d,h,mi,s)
 
         indexS = self.recursiveSearch(DateS, TimeS)
         index = indexS
-        while self.parseDate(self.SDarr[index].date) < dtE and self.parseTime(self.SDarr[index].time) < tiE:
+        while self.parseDateTime(self.SDarr[index].date,self.SDarr[index].time) <= dtE:
             tempAvrg += self.SDarr[index].temp
             ACCMagAvrg += self.SDarr[index].ACCMag
             onWristAvrg += self.SDarr[index].onWrist
             stepCtAvrg += self.SDarr[index].stepCt
             restAvrg += self.SDarr[index].rest
             index += 1
-        size = index - indexS + 1
+        size = index - indexS
         tempAvrg = tempAvrg / size
         ACCMagAvrg = ACCMagAvrg / size
         onWristAvrg = round(onWristAvrg / size)
@@ -284,6 +277,6 @@ if __name__ == '__main__':
     sd = sensorData('DummyData.csv', 'DummyData.csv')
     sd.compileSensor()
     print(sd.summarize('OnWrist'))
-    print(sd.aggregate('2019-09-20','2019-09-20','11:50:00', '11:52:00'))
+    print(sd.aggregate('2019-09-20','2019-09-20','11:49:00', '11:52:00'))
     gd = sd.compileGraphData()
     print(gd.dfTemp)
