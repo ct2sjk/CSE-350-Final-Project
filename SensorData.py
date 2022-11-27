@@ -1,6 +1,13 @@
 import pandas as pd
 import numpy as np
 from datetime import *
+"""
+To do: 
+Add time offset for timezone (compile sensor)
+Add timezone to dataframe (graphdata)
+"""
+
+
 
 class metaData:
     def __init__(self, DateTimeUTC, TimezoneM, App, AppVersion, OS, OSVersion, GTCS):
@@ -40,8 +47,7 @@ class graphData:
         match DataSet:
             case 'Temp':
                 for obj in self.SDarr:
-                    d.append({'Date': obj.date,
-                              'Time': obj.time, 
+                    d.append({'DateTime': self.parseDateTime(obj.date, obj.time), 
                               'Temp': obj.temp
 
                               })
@@ -49,8 +55,7 @@ class graphData:
                 self.dfTemp = pd.DataFrame(d)
             case 'ACCMagnitude':
                 for obj in self.SDarr:
-                    d.append({'Date': obj.date,
-                              'Time': obj.time, 
+                    d.append({'DateTime': self.parseDateTime(obj.date, obj.time), 
                               'Temp': obj.ACCMag
 
                               })
@@ -58,8 +63,7 @@ class graphData:
                 self.dfAcc = pd.DataFrame(d)
             case 'OnWrist':
                 for obj in self.SDarr:
-                    d.append({'Date': obj.date,
-                              'Time': obj.time, 
+                    d.append({'DateTime': self.parseDateTime(obj.date, obj.time), 
                               'Temp': obj.onWrist
 
                               })
@@ -67,8 +71,7 @@ class graphData:
                 self.dfOnWirst = pd.DataFrame(d)
             case 'StepCount':
                 for obj in self.SDarr:
-                    d.append({'Date': obj.date,
-                              'Time': obj.time, 
+                    d.append({'DateTime': self.parseDateTime(obj.date, obj.time), 
                               'Temp': obj.stepCt
 
                               })
@@ -76,13 +79,19 @@ class graphData:
                 self.dfStepCt = pd.DataFrame(d)
             case 'Rest':
                 for obj in self.SDarr:
-                    d.append({'Date': obj.date,
-                              'Time': obj.time, 
+                    d.append({'DateTime': self.parseDateTime(obj.date, obj.time), 
                               'Temp': obj.rest
 
                               })
                     iter += 1
                 self.dfRest = pd.DataFrame(d)
+
+    def parseDateTime(self,date,time):
+        time = time.replace('Z','')
+        y,m,d = [int(x) for x in date.split('-')]
+        h,mi,s = [int(x) for x in time.split(':')]
+        dati = datetime(y,m,d,h,mi,s)
+        return dati    
 
     def compileGraph(self):
         self.switcher('Temp')
