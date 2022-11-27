@@ -37,7 +37,7 @@ class graphData:
         self.SDSize = SDSize
         self.dfTemp = pd.DataFrame()
         self.dfAcc = pd.DataFrame()
-        self.dfOnWirst = pd.DataFrame()
+        self.dfOnWrist = pd.DataFrame()
         self.dfStepCt = pd.DataFrame()
         self.dfRest = pd.DataFrame()
 
