@@ -1,14 +1,6 @@
 import pandas as pd
 import numpy as np
 from datetime import *
-"""
-To do: 
-Add time offset for timezone (compile sensor)
-Add timezone to dataframe (graphdata)
-Add EDA to all sd structures
-Add Movement Intensity to all sd structures
-"""
-
 
 class metaData:
     def __init__(self, DateTimeUTC, TimezoneM, App, AppVersion, OS, OSVersion, GTCS):
