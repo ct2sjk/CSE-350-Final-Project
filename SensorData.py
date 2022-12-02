@@ -56,7 +56,7 @@ class graphData:
                 for obj in self.SDarr:
                     d.append({'DateTime': self.parseDateTime(obj.date, obj.time),
                               'TimeZ': obj.timeZ,
-                              'Temp': obj.ACCMag
+                              'ACC Magnitude': obj.ACCMag
                               })
                     iter += 1
                 self.dfAcc = pd.DataFrame(d)
@@ -64,7 +64,7 @@ class graphData:
                 for obj in self.SDarr:
                     d.append({'DateTime': self.parseDateTime(obj.date, obj.time),
                               'TimeZ': obj.timeZ,
-                              'Temp': obj.EDA
+                              'EDA': obj.EDA
                               })
                     iter += 1
                 self.dfEDA = pd.DataFrame(d)
@@ -72,7 +72,7 @@ class graphData:
                 for obj in self.SDarr:
                     d.append({'DateTime': self.parseDateTime(obj.date, obj.time),
                               'TimeZ': obj.timeZ,
-                              'Temp': obj.onWrist
+                              'On Wrist': obj.onWrist
                               })
                     iter += 1
                 self.dfOnWirst = pd.DataFrame(d)
@@ -80,7 +80,7 @@ class graphData:
                 for obj in self.SDarr:
                     d.append({'DateTime': self.parseDateTime(obj.date, obj.time),
                               'TimeZ': obj.timeZ,
-                              'Temp': obj.movInten
+                              'Movement Intensity': obj.movInten
                               })
                     iter += 1
                 self.dfMovInten = pd.DataFrame(d)
@@ -88,7 +88,7 @@ class graphData:
                 for obj in self.SDarr:
                     d.append({'DateTime': self.parseDateTime(obj.date, obj.time),
                               'TimeZ': obj.timeZ,
-                              'Temp': obj.stepCt
+                              'Step Count': obj.stepCt
                               })
                     iter += 1
                 self.dfStepCt = pd.DataFrame(d)
@@ -96,7 +96,7 @@ class graphData:
                 for obj in self.SDarr:
                     d.append({'DateTime': self.parseDateTime(obj.date, obj.time),
                               'TimeZ': obj.timeZ,
-                              'Temp': obj.rest
+                              'Rest': obj.rest
                               })
                     iter += 1
                 self.dfRest = pd.DataFrame(d)
