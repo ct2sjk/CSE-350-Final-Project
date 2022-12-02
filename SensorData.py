@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from datetime import *
 
+
 class metaData:
     def __init__(self, DateTimeUTC, TimezoneM, App, AppVersion, OS, OSVersion, GTCS):
         self.dateTimeUTC = DateTimeUTC
@@ -331,11 +332,33 @@ class sensorData:
 
         return tempAvrg, ACCMagAvrg, EDAAvrg, onWristAvrg, movIntenAvrg, stepCtAvrg, restAvrg
 
+    def queryGraph(self, DateS, DateE, TimeS, TimeE):
+        y, m, d = [int(x) for x in DateE.split('-')]
+        h, mi, s = [int(x) for x in TimeE.split(':')]
+        dtE = datetime(y, m, d, h, mi, s)
+
+        SDarrQ = []
+
+        indexS = self.recursiveSearch(DateS, TimeS)
+        index = indexS
+        while self.parseDateTime(self.SDarr[index].date, self.SDarr[index].time) <= dtE:
+            sp = sensorPoint(self.SDarr[index].date, self.SDarr[index].time, self.SDarr[index].timeZ, self.SDarr[index].temp, self.SDarr[index].ACCMag,
+                             self.SDarr[index].EDA, self.SDarr[index].onWrist, self.SDarr[index].movInten, self.SDarr[index].stepCt, self.SDarr[index].rest)
+
+            SDarrQ.append(sp)
+            index += 1
+        SDarrQsize = index - indexS
+        gd = graphData(SDarrQ, SDarrQsize)
+        gd.compileGraph()
+        return gd
+
 
 if __name__ == '__main__':
     sd = sensorData('DummyData.csv', 'DummyData.csv')
     sd.compileSensor()
     print(sd.summarize('OnWrist'))
     print(sd.aggregate('2019-09-20', '2019-09-20', '11:49:00', '11:52:00'))
+    gdq = sd.queryGraph('2019-09-20', '2019-09-20', '11:49:00', '11:52:00')
+    print(gdq.dfEDA)
     gd = sd.compileGraphData()
     print(gd.dfTemp)
