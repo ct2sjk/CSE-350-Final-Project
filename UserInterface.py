@@ -16,6 +16,7 @@ class UserInterface(tk.Tk):
         super().__init__()
         self.sd = sd
         self.gd = gd
+        self.gdTemp = gd
         self.title('Sensor Data')
         self.geometry('1920x1080')
 
@@ -153,29 +154,66 @@ class UserInterface(tk.Tk):
         self.sd.compileSensor()
         self.sd.compileMeta()
         self.gd = self.sd.compileGraphData()
+        self.callback()
 
+    def aggregateData(self, DateS, DateE, TimeS, TimeE):
+        #returnData = [tempAvrg, ACCMagAvrg, EDAAvrg, onWristAvrg, movIntenAvrg, stepCtAvrg, restAvrg]
+        #add window to aggregate based on timeframe
+        #window needs start date, end date, start time, and end time
+        #add start button on window
+        returnData = self.sd.aggregate(DateS, DateE, TimeS, TimeE)
+        #somehow plot the return data over graphs
+        self.callback()
+
+    def queryData(self, DateS, DateE, TimeS, TimeE):
+        #add window to query based on timeframe
+        #window needs start date, end date, start time, and end time
+        #add start button on window
+        self.gd = self.sd.queryGraph(DateS, DateE, TimeS, TimeE)
+        self.callback()
+
+    def switchGraphData(self):
+        #switches between query graphs and full graphs
+        gdq = self.gd
+        self.gd = self.gdTemp
+        self.gdTemp = gdq
+        self.callback()
 
     def temp_summarize(self):
         #returnData = [sum, highest, lowest]
         returnData = self.sd.summarize('Temp')
+        #somehow plot the return data over graphs
+        self.callback()
     def acc_mag_summarize(self):
         #returnData = [sum, highest, lowest]
         returnData = self.sd.summarize('ACCMagnitude')
+        #somehow plot the return data over graphs
+        self.callback()
     def on_wrist_summarize(self):
         #returnData = [sum, highest, lowest]
         returnData = self.sd.summarize('OnWrist')
+        #somehow plot the return data over graphs
+        self.callback()
     def step_count_summarize(self):
         #returnData = [sum, highest, lowest]
         returnData = self.sd.summarize('StepCount')
+        #somehow plot the return data over graphs
+        self.callback()
     def rest_summarize(self):
         #returnData = [sum, highest, lowest]
         returnData = self.sd.summarize('Rest')
+        #somehow plot the return data over graphs
+        self.callback()
     def EDA_summarize(self):
         #returnData = [sum, highest, lowest]
         returnData = self.sd.summarize('EDA')
+        #somehow plot the return data over graphs
+        self.callback()
     def Movement_summarize(self):
         #returnData = [sum, highest, lowest]
         returnData = self.sd.summarize('MovInten')
+        #somehow plot the return data over graphs
+        self.callback()
 
     def callback(self):
         self.axes.clear()
