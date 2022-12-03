@@ -1,38 +1,0 @@
-
-_python:S2208"GImport only needed names or import the module and then use its members.(ï€¢
-vpython:S117e"ZRename this local variable "EDA_Frame" to match the regular expression ^[_a-z][a-z0-9_]*$.(Ô‰‘¾ûÿÿÿÿ
-}python:S117j"aRename this local variable "EDA_Frame_canvas" to match the regular expression ^[_a-z][a-z0-9_]*$.(É£½Îùÿÿÿÿ
-tpython:S117n"^Rename this local variable "EDA_summarize" to match the regular expression ^[_a-z][a-z0-9_]*$.(“ğş^
-vpython:S117r"_Rename this local variable "Movement_Frame" to match the regular expression ^[_a-z][a-z0-9_]*$.(§»¦
-}python:S117w"fRename this local variable "Movement_Frame_canvas" to match the regular expression ^[_a-z][a-z0-9_]*$.(ìÌ¯
-python:S117{"cRename this local variable "Movement_summarize" to match the regular expression ^[_a-z][a-z0-9_]*$.(Î÷¶‹şÿÿÿÿ
-tpython:S1171"]Rename this local variable "acc_magFrame" to match the regular expression ^[_a-z][a-z0-9_]*$.(øşğ®
-€python:S1176"dRename this local variable "acc_magFrame_canvas" to match the regular expression ^[_a-z][a-z0-9_]*$.(Ã²äÀúÿÿÿÿ
-vpython:S117>"_Rename this local variable "on_wrist_Frame" to match the regular expression ^[_a-z][a-z0-9_]*$.(Ø• ­
-‚python:S117C"fRename this local variable "on_wrist_Frame_canvas" to match the regular expression ^[_a-z][a-z0-9_]*$.(ÙÒ’÷üÿÿÿÿ
-rpython:S117X"[Rename this local variable "rest_Frame" to match the regular expression ^[_a-z][a-z0-9_]*$.(´ÿùÉ
-~python:S117]"bRename this local variable "rest_Frame_canvas" to match the regular expression ^[_a-z][a-z0-9_]*$.(À¹˜ùÿÿÿÿ
-xpython:S117K"aRename this local variable "step_count_Frame" to match the regular expression ^[_a-z][a-z0-9_]*$.(ÙÜôú
-„python:S117P"hRename this local variable "step_count_Frame_canvas" to match the regular expression ^[_a-z][a-z0-9_]*$.(‚™ì£ûÿÿÿÿ
-ypython:S117&"bRename this local variable "tempFigure_canvas" to match the regular expression ^[_a-z][a-z0-9_]*$.(î™¤ˆ
-vpython:S117"ZRename this local variable "tempFrame" to match the regular expression ^[_a-z][a-z0-9_]*$.(´ëï’øÿÿÿÿ
-_python:S5655!"GChange this argument; Function "create_window" expects a different type(è³Éœ
-_python:S930!"HAdd 1 missing arguments; 'create_window' expects 2 positional arguments.(è³Éœ
-_python:S56553"GChange this argument; Function "create_window" expects a different type(¸¼¤
-_python:S9303"HAdd 1 missing arguments; 'create_window' expects 2 positional arguments.(¸¼¤
-_python:S5655@"GChange this argument; Function "create_window" expects a different type(Ù§ìŞ
-_python:S930@"HAdd 1 missing arguments; 'create_window' expects 2 positional arguments.(Ù§ìŞ
-^python:S5655M"GChange this argument; Function "create_window" expects a different type(ÀÙ‰"
-^python:S930M"HAdd 1 missing arguments; 'create_window' expects 2 positional arguments.(ÀÙ‰"
-dpython:S5655Z"GChange this argument; Function "create_window" expects a different type(®§Âûüÿÿÿÿ
-dpython:S930Z"HAdd 1 missing arguments; 'create_window' expects 2 positional arguments.(®§Âûüÿÿÿÿ
-dpython:S5655g"GChange this argument; Function "create_window" expects a different type(òŒõ©ıÿÿÿÿ
-dpython:S930g"HAdd 1 missing arguments; 'create_window' expects 2 positional arguments.(òŒõ©ıÿÿÿÿ
-dpython:S5655t"GChange this argument; Function "create_window" expects a different type(ü‚“üÿÿÿÿ
-dpython:S930t"HAdd 1 missing arguments; 'create_window' expects 2 positional arguments.(ü‚“üÿÿÿÿ
-wpython:S1186"YAdd a nested comment explaining why this method is empty, or complete the implementation.(× »¼ûÿÿÿÿ
-wpython:S1186"YAdd a nested comment explaining why this method is empty, or complete the implementation.(“íÃÎúÿÿÿÿ
-wpython:S1186’"YAdd a nested comment explaining why this method is empty, or complete the implementation.(ˆ³‚³ùÿÿÿÿ
-wpython:S1186”"YAdd a nested comment explaining why this method is empty, or complete the implementation.(õ’šüÿÿÿÿ
-qpython:S1186–"YAdd a nested comment explaining why this method is empty, or complete the implementation.(”äÙg
-wpython:S1186˜"YAdd a nested comment explaining why this method is empty, or complete the implementation.(§Ì“”ÿÿÿÿÿ
