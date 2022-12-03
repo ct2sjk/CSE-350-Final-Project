@@ -216,6 +216,7 @@ class UserInterface(tk.Tk):
         self.callback()
 
     def callback(self):
+        #debug
         self.axes.clear()
         self.df.plot(y='y-axis', x='time', ax=self.axes)
         self.axes.set_title('Sensor Data')
