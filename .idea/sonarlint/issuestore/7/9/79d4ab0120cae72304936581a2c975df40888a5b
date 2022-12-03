@@ -1,0 +1,109 @@
+
+dpython:S2208"GImport only needed names or import the module and then use its members.(¡¾¼Ïşÿÿÿÿ
+opython:S116"SRename this field "dateTimeUTC" to match the regular expression ^[_a-z][_a-z0-9]*$.(­ÂŠ úÿÿÿÿ
+ipython:S116"RRename this field "appVersion" to match the regular expression ^[_a-z][_a-z0-9]*$.(¥¯©Ä
+hpython:S116	"QRename this field "timezoneM" to match the regular expression ^[_a-z][_a-z0-9]*$.(ûşîÛ
+mpython:S116"QRename this field "OSVersion" to match the regular expression ^[_a-z][_a-z0-9]*$.(è£¨èúÿÿÿÿ
+~python:S101"bRename class "metaData" to match the regular expression ^_?([A-Z_][a-zA-Z0-9]*|[a-z_][a-z0-9_]*)$.(€æµ€ùÿÿÿÿ
+kpython:S117"ORename this parameter "App" to match the regular expression ^[_a-z][a-z0-9_]*$.(½š…çøÿÿÿÿ
+rpython:S117"VRename this parameter "AppVersion" to match the regular expression ^[_a-z][a-z0-9_]*$.(½š…çøÿÿÿÿ
+spython:S117"WRename this parameter "DateTimeUTC" to match the regular expression ^[_a-z][a-z0-9_]*$.(½š…çøÿÿÿÿ
+lpython:S117"PRename this parameter "GTCS" to match the regular expression ^[_a-z][a-z0-9_]*$.(½š…çøÿÿÿÿ
+jpython:S117"NRename this parameter "OS" to match the regular expression ^[_a-z][a-z0-9_]*$.(½š…çøÿÿÿÿ
+qpython:S117"URename this parameter "OSVersion" to match the regular expression ^[_a-z][a-z0-9_]*$.(½š…çøÿÿÿÿ
+qpython:S117"URename this parameter "TimezoneM" to match the regular expression ^[_a-z][a-z0-9_]*$.(½š…çøÿÿÿÿ
+kpython:S116"ORename this field "onWrist" to match the regular expression ^[_a-z][_a-z0-9]*$.(¨òéßÿÿÿÿÿ
+dpython:S116"MRename this field "timeZ" to match the regular expression ^[_a-z][_a-z0-9]*$.(˜ŒÙ¥
+epython:S116"NRename this field "ACCMag" to match the regular expression ^[_a-z][_a-z0-9]*$.(ÈÑ½œ
+gpython:S116"PRename this field "movInten" to match the regular expression ^[_a-z][_a-z0-9]*$.(¦¦§…
+jpython:S116"NRename this field "stepCt" to match the regular expression ^[_a-z][_a-z0-9]*$.(’Å™ÿÿÿÿÿ
+python:S101"eRename class "sensorPoint" to match the regular expression ^_?([A-Z_][a-zA-Z0-9]*|[a-z_][a-z0-9_]*)$.(™­ûûÿÿÿÿ
+tpython:S117"XRename this parameter "ACCMagnitude" to match the regular expression ^[_a-z][a-z0-9_]*$.(ûòÔÏøÿÿÿÿ
+lpython:S117"PRename this parameter "Date" to match the regular expression ^[_a-z][a-z0-9_]*$.(ûòÔÏøÿÿÿÿ
+kpython:S117"ORename this parameter "EDA" to match the regular expression ^[_a-z][a-z0-9_]*$.(ûòÔÏøÿÿÿÿ
+ypython:S117"]Rename this parameter "MovementIntensity" to match the regular expression ^[_a-z][a-z0-9_]*$.(ûòÔÏøÿÿÿÿ
+opython:S117"SRename this parameter "OnWrist" to match the regular expression ^[_a-z][a-z0-9_]*$.(ûòÔÏøÿÿÿÿ
+lpython:S117"PRename this parameter "Rest" to match the regular expression ^[_a-z][a-z0-9_]*$.(ûòÔÏøÿÿÿÿ
+qpython:S117"URename this parameter "StepCount" to match the regular expression ^[_a-z][a-z0-9_]*$.(ûòÔÏøÿÿÿÿ
+lpython:S117"PRename this parameter "Temp" to match the regular expression ^[_a-z][a-z0-9_]*$.(ûòÔÏøÿÿÿÿ
+lpython:S117"PRename this parameter "Time" to match the regular expression ^[_a-z][a-z0-9_]*$.(ûòÔÏøÿÿÿÿ
+ppython:S117"TRename this parameter "Timezone" to match the regular expression ^[_a-z][a-z0-9_]*$.(ûòÔÏøÿÿÿÿ
+epython:S116#"NRename this field "dfTemp" to match the regular expression ^[_a-z][_a-z0-9]*$.(Ï¸òÅ
+npython:S116'"RRename this field "dfMovInten" to match the regular expression ^[_a-z][_a-z0-9]*$.(¾É¸üüÿÿÿÿ
+hpython:S116&"QRename this field "dfOnWrist" to match the regular expression ^[_a-z][_a-z0-9]*$.(Šµ´£
+lpython:S116("PRename this field "dfStepCt" to match the regular expression ^[_a-z][_a-z0-9]*$.(ÊıáÄÿÿÿÿÿ
+ipython:S116$"MRename this field "dfAcc" to match the regular expression ^[_a-z][_a-z0-9]*$.(…•ï·şÿÿÿÿ
+jpython:S116""NRename this field "SDSize" to match the regular expression ^[_a-z][_a-z0-9]*$.(—àıìıÿÿÿÿ
+dpython:S116%"MRename this field "dfEDA" to match the regular expression ^[_a-z][_a-z0-9]*$.(æ¾Ò«
+dpython:S116!"MRename this field "SDarr" to match the regular expression ^[_a-z][_a-z0-9]*$.(‘»É†
+hpython:S116N"QRename this field "dfOnWirst" to match the regular expression ^[_a-z][_a-z0-9]*$.(éåŞ¨
+jpython:S116)"NRename this field "dfRest" to match the regular expression ^[_a-z][_a-z0-9]*$.(äÎ®ıÿÿÿÿ
+zpython:S101"cRename class "graphData" to match the regular expression ^_?([A-Z_][a-zA-Z0-9]*|[a-z_][a-z0-9_]*)$.(‹¢É
+ipython:S117 "RRename this parameter "SDSize" to match the regular expression ^[_a-z][a-z0-9_]*$.(£±³ô
+hpython:S117 "QRename this parameter "SDarr" to match the regular expression ^[_a-z][a-z0-9_]*$.(£±³ô
+opython:S117+"SRename this parameter "DataSet" to match the regular expression ^[_a-z][a-z0-9_]*$.(ÆšŒĞşÿÿÿÿ
+Epython:S1481,"(Remove the unused local variable "iter".(ÅˆŸšüÿÿÿÿ
+Epython:S14815"(Remove the unused local variable "iter".(÷â·Ïıÿÿÿÿ
+Epython:S1481="(Remove the unused local variable "iter".(÷â·Ïıÿÿÿÿ
+Epython:S1481E"(Remove the unused local variable "iter".(÷â·Ïıÿÿÿÿ
+Epython:S1481M"(Remove the unused local variable "iter".(÷â·Ïıÿÿÿÿ
+Epython:S1481U"(Remove the unused local variable "iter".(÷â·Ïıÿÿÿÿ
+Epython:S1481]"(Remove the unused local variable "iter".(÷â·Ïıÿÿÿÿ
+Epython:S1481e"(Remove the unused local variable "iter".(÷â·Ïıÿÿÿÿ
+Hpython:S5806,"+Rename this variable; it shadows a builtin.(ÅˆŸšüÿÿÿÿ
+mpython:S100h"QRename method "parseDateTime" to match the regular expression ^[a-z_][a-z0-9_]*$.(ö Ğúÿÿÿÿ
+gpython:S100o"PRename method "compileGraph" to match the regular expression ^[a-z_][a-z0-9_]*$.(¯¶ö£
+ipython:S116~"MRename this field "MDarr" to match the regular expression ^[_a-z][_a-z0-9]*$.(‰©Å«úÿÿÿÿ
+jpython:S116|"TRename this field "metaDataFile" to match the regular expression ^[_a-z][_a-z0-9]*$.(­¾Ù]
+epython:S116"NRename this field "SDSize" to match the regular expression ^[_a-z][_a-z0-9]*$.(¡åŒ
+kpython:S116€"NRename this field "MDSize" to match the regular expression ^[_a-z][_a-z0-9]*$.(ˆ®–¿şÿÿÿÿ
+dpython:S116}"MRename this field "SDarr" to match the regular expression ^[_a-z][_a-z0-9]*$.(€²Û
+opython:S116{"SRename this field "summaryFile" to match the regular expression ^[_a-z][_a-z0-9]*$.(Á€‡¥üÿÿÿÿ
+{python:S101y"dRename class "sensorData" to match the regular expression ^_?([A-Z_][a-zA-Z0-9]*|[a-z_][a-z0-9_]*)$.(ÏØ¦Ë
+tpython:S117z"XRename this parameter "metaDataFile" to match the regular expression ^[_a-z][a-z0-9_]*$.(åäâüÿÿÿÿ
+spython:S117z"WRename this parameter "summaryFile" to match the regular expression ^[_a-z][a-z0-9_]*$.(åäâüÿÿÿÿ
+kpython:S117‚"SRename this parameter "DataSet" to match the regular expression ^[_a-z][a-z0-9_]*$.(‹¶õª
+rpython:S117‡"[Rename this local variable "returnData" to match the regular expression ^[_a-z][a-z0-9_]*$.(âÀ‘
+gpython:S100‚"ORename method "switcherSum" to match the regular expression ^[a-z_][a-z0-9_]*$.(‹¶õª
+mpython:S3776‚"TRefactor this function to reduce its Cognitive Complexity from 49 to the 15 allowed.(‹¶õª
+Ipython:S5806ƒ"+Rename this variable; it shadows a builtin.(ò‚¢òøÿÿÿÿ
+Ipython:S5806†"+Rename this variable; it shadows a builtin.(ÅˆŸšüÿÿÿÿ
+npython:S117ì"QRename this parameter "dateS" to match the regular expression ^[_a-z][a-z0-9_]*$.(İœûûÿÿÿÿ
+kpython:S117ñ"TRename this local variable "dtS" to match the regular expression ^[_a-z][a-z0-9_]*$.(¹©—K
+npython:S117ì"QRename this parameter "timeS" to match the regular expression ^[_a-z][a-z0-9_]*$.(İœûûÿÿÿÿ
+ppython:S100ì"SRename method "recursiveSearch" to match the regular expression ^[a-z_][a-z0-9_]*$.(İœûûÿÿÿÿ
+npython:S100û"QRename method "parseDateTime" to match the regular expression ^[a-z_][a-z0-9_]*$.(ö Ğúÿÿÿÿ
+spython:S117ˆ"VRename this local variable "dateC" to match the regular expression ^[_a-z][a-z0-9_]*$.(ÊãÛúùÿÿÿÿ
+ppython:S117‰"XRename this local variable "onWrist" to match the regular expression ^[_a-z][a-z0-9_]*$.(ĞíÌü
+spython:S117ˆ"VRename this local variable "timeC" to match the regular expression ^[_a-z][a-z0-9_]*$.(ÊãÛúùÿÿÿÿ
+ipython:S100‚"QRename method "compileSensor" to match the regular expression ^[a-z_][a-z0-9_]*$.(½şê®
+fpython:S100‘"ORename method "compileMeta" to match the regular expression ^[a-z_][a-z0-9_]*$.(›—ªe
+lpython:S100œ"TRename method "compileGraphData" to match the regular expression ^[a-z_][a-z0-9_]*$.(’ïóÑ
+opython:S1854¢"QRemove this assignment to local variable 'returnedData'; the value is never used.(ÑÔÃ÷ıÿÿÿÿ
+ppython:S117¡"SRename this parameter "DataSet" to match the regular expression ^[_a-z][a-z0-9_]*$.(úõ³ìıÿÿÿÿ
+rpython:S117¤"URename this local variable "rSum" to match the regular expression ^[_a-z][a-z0-9_]*$.(¼ğÜÇşÿÿÿÿ
+opython:S117¦"WRename this local variable "rangeL" to match the regular expression ^[_a-z][a-z0-9_]*$.(†„ÍÏ
+tpython:S117¥"WRename this local variable "rangeU" to match the regular expression ^[_a-z][a-z0-9_]*$.(¤Õìúÿÿÿÿ
+zpython:S117¢"]Rename this local variable "returnedData" to match the regular expression ^[_a-z][a-z0-9_]*$.(ÑÔÃ÷ıÿÿÿÿ
+xpython:S117®"[Rename this local variable "ACCMagAvrg" to match the regular expression ^[_a-z][a-z0-9_]*$.(¤Á«ûÿÿÿÿ
+npython:S117¬"QRename this parameter "DateE" to match the regular expression ^[_a-z][a-z0-9_]*$.(”¿Ùşıÿÿÿÿ
+npython:S117¬"QRename this parameter "DateS" to match the regular expression ^[_a-z][a-z0-9_]*$.(”¿Ùşıÿÿÿÿ
+ppython:S117¯"XRename this local variable "EDAAvrg" to match the regular expression ^[_a-z][a-z0-9_]*$.(ò–¥ô
+npython:S117¬"QRename this parameter "TimeE" to match the regular expression ^[_a-z][a-z0-9_]*$.(”¿Ùşıÿÿÿÿ
+npython:S117¬"QRename this parameter "TimeS" to match the regular expression ^[_a-z][a-z0-9_]*$.(”¿Ùşıÿÿÿÿ
+lpython:S117·"TRename this local variable "dtE" to match the regular expression ^[_a-z][a-z0-9_]*$.(Î¤¢°
+tpython:S117¹"WRename this local variable "indexS" to match the regular expression ^[_a-z][a-z0-9_]*$.(¡ººıÿÿÿÿ
+zpython:S117±"]Rename this local variable "movIntenAvrg" to match the regular expression ^[_a-z][a-z0-9_]*$.(ãùôÓùÿÿÿÿ
+ypython:S117°"\Rename this local variable "onWristAvrg" to match the regular expression ^[_a-z][a-z0-9_]*$.(Ê™Ê¸úÿÿÿÿ
+qpython:S117³"YRename this local variable "restAvrg" to match the regular expression ^[_a-z][a-z0-9_]*$.(¼¤¾
+xpython:S117²"[Rename this local variable "stepCtAvrg" to match the regular expression ^[_a-z][a-z0-9_]*$.(ƒÄİùÿÿÿÿ
+ppython:S117­"YRename this local variable "tempAvrg" to match the regular expression ^[_a-z][a-z0-9_]*$.(Û¡î?
+ipython:S117Ï"QRename this parameter "DateE" to match the regular expression ^[_a-z][a-z0-9_]*$.(²–±ã
+ipython:S117Ï"QRename this parameter "DateS" to match the regular expression ^[_a-z][a-z0-9_]*$.(²–±ã
+tpython:S117Ô"WRename this local variable "SDarrQ" to match the regular expression ^[_a-z][a-z0-9_]*$.(ç©©ûÿÿÿÿ
+xpython:S117Ş"[Rename this local variable "SDarrQsize" to match the regular expression ^[_a-z][a-z0-9_]*$.(¤Ûšùÿÿÿÿ
+ipython:S117Ï"QRename this parameter "TimeE" to match the regular expression ^[_a-z][a-z0-9_]*$.(²–±ã
+ipython:S117Ï"QRename this parameter "TimeS" to match the regular expression ^[_a-z][a-z0-9_]*$.(²–±ã
+lpython:S117Ò"TRename this local variable "dtE" to match the regular expression ^[_a-z][a-z0-9_]*$.(Î¤¢°
+tpython:S117Ö"WRename this local variable "indexS" to match the regular expression ^[_a-z][a-z0-9_]*$.(¡ººıÿÿÿÿ
+fpython:S100Ï"NRename method "queryGraph" to match the regular expression ^[a-z_][a-z0-9_]*$.(²–±ã
