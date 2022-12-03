@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import *
 import matplotlib
 import pandas as pd
+import SensorData as SD
 
 matplotlib.use('TKAgg')
 
@@ -11,10 +12,12 @@ from matplotlib.widgets import Slider
 
 class UserInterface(tk.Tk):
 
-    def __init__(self):
+    def __init__(self,sd,gd):
         super().__init__()
+        self.sd = sd
+        self.gd = gd
         self.title('Sensor Data')
-        self.geometry('1000x800')
+        self.geometry('1920x1080')
 
         window_frame = Frame(self)
         window_frame.pack()
@@ -121,20 +124,37 @@ class UserInterface(tk.Tk):
         # EDA
         # Movement intensity
 
+    def addNewData(self, summaryFile, metaDataFile):
+        #add window for compiling new data with two fields
+        #fields open a browse window for file explorer to specify files
+        #compile button calls method
+        self.sd = SD.sensorData(summaryFile,metaDataFile)
+        self.sd.compileSensor()
+        self.sd.compileMeta()
+        self.gd = self.sd.compileGraphData()
+
+
     def temp_summarize(self):
-        pass
+        #returnData = [sum, highest, lowest]
+        returnData = self.sd.summarize('Temp')
     def acc_mag_summarize(self):
-        pass
+        #returnData = [sum, highest, lowest]
+        returnData = self.sd.summarize('ACCMagnitude')
     def on_wrist_summarize(self):
-        pass
+        #returnData = [sum, highest, lowest]
+        returnData = self.sd.summarize('OnWrist')
     def step_count_summarize(self):
-        pass
+        #returnData = [sum, highest, lowest]
+        returnData = self.sd.summarize('StepCount')
     def rest_summarize(self):
-        pass
+        #returnData = [sum, highest, lowest]
+        returnData = self.sd.summarize('Rest')
     def EDA_summarize(self):
-        pass
+        #returnData = [sum, highest, lowest]
+        returnData = self.sd.summarize('EDA')
     def Movement_summarize(self):
-        pass
+        #returnData = [sum, highest, lowest]
+        returnData = self.sd.summarize('MovInten')
 
     def callback(self):
         self.axes.clear()
