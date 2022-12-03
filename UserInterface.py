@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import *
-import matplotlib
+from tkinter import ttk
 import pandas as pd
 import SensorData as SD
 
