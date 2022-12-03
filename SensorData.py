@@ -330,7 +330,9 @@ class sensorData:
         stepCtAvrg = stepCtAvrg / size
         restAvrg = restAvrg / size
 
-        return tempAvrg, ACCMagAvrg, EDAAvrg, onWristAvrg, movIntenAvrg, stepCtAvrg, restAvrg
+        returnData = [tempAvrg, ACCMagAvrg, EDAAvrg, onWristAvrg, movIntenAvrg, stepCtAvrg, restAvrg]
+
+        return returnData
 
     def queryGraph(self, DateS, DateE, TimeS, TimeE):
         y, m, d = [int(x) for x in DateE.split('-')]
