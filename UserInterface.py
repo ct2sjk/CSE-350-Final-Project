@@ -26,6 +26,9 @@ class UserInterface(tk.Tk):
         tempFrame = Frame(window_frame, width=100, height=200)
         tempFrame.grid(row=0, column=0, padx=10, pady=5)
 
+        label1 = Label(tempFrame, text="Temperature")
+        label1.pack()
+
         figure = Figure(figsize=(3, 2), dpi=100)
 
         tempFigure_canvas = FigureCanvasTkAgg(figure, tempFrame)
@@ -41,7 +44,10 @@ class UserInterface(tk.Tk):
 
         acc_magFrame = Frame(window_frame, width=100, height=200)
 
-        acc_magFrame.grid(row=1, column=0, padx=10, pady=5)
+        label1 = Label(acc_magFrame, text="Acc Magnitude Average")
+        label1.pack()
+
+        acc_magFrame.grid(row=1, column=0, padx=10, pady=10)
 
         acc_magFrame_canvas = FigureCanvasTkAgg(figure, acc_magFrame)
         toolbar = NavigationToolbar2Tk(acc_magFrame_canvas, acc_magFrame)
@@ -52,6 +58,9 @@ class UserInterface(tk.Tk):
         self.axes = figure.add_subplot()
 
         on_wrist_Frame = Frame(window_frame, width=100, height=200)
+
+        label1 = Label(on_wrist_Frame, text="On Wrist")
+        label1.pack()
 
         on_wrist_Frame.grid(row=2, column=0, padx=10, pady=5)
 
@@ -65,6 +74,9 @@ class UserInterface(tk.Tk):
 
         step_count_Frame = Frame(window_frame, width=100, height=200)
 
+        label1 = Label(step_count_Frame, text="Step Count")
+        label1.pack()
+
         step_count_Frame.grid(row=0, column=2, padx=10, pady=5)
 
         step_count_Frame_canvas = FigureCanvasTkAgg(figure, step_count_Frame)
@@ -76,6 +88,9 @@ class UserInterface(tk.Tk):
         self.axes = figure.add_subplot()
 
         rest_Frame = Frame(window_frame, width=100, height=200)
+
+        label1 = Label(rest_Frame, text="Rest")
+        label1.pack()
 
         rest_Frame.grid(row=0, column=1, padx=10, pady=5)
 
@@ -89,6 +104,9 @@ class UserInterface(tk.Tk):
 
         EDA_Frame = Frame(window_frame, width=100, height=200)
 
+        label1 = Label(EDA_Frame, text="EDA Average")
+        label1.pack()
+
         EDA_Frame.grid(row=1, column=1, padx=10, pady=5)
 
         EDA_Frame_canvas = FigureCanvasTkAgg(figure, EDA_Frame)
@@ -100,6 +118,9 @@ class UserInterface(tk.Tk):
         self.axes = figure.add_subplot()
 
         Movement_Frame = Frame(window_frame, width=100, height=200)
+
+        label1 = Label(Movement_Frame, text="Movement Intensity")
+        label1.pack()
 
         Movement_Frame.grid(row=2, column=1, padx=10, pady=5)
 
