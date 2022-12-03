@@ -17,41 +17,30 @@ class UserInterface(tk.Tk):
         self.geometry('1000x800')
 
         window_frame = Frame(self)
-        window_frame.pack(side=TOP, expand=1)
+        window_frame.pack()
 
-        window_canvas = Canvas(window_frame)
-        window_canvas.pack(side=LEFT, fill=BOTH, expand=1)
 
-        window_scrollbar = Scrollbar(window_frame, orient=VERTICAL, command=window_canvas.yview)
-        window_scrollbar.pack(side=RIGHT, fill=Y)
-
-        window_canvas.configure(yscrollcommand=window_scrollbar.set)
-        window_canvas.bind('<Configure>', lambda e: window_canvas.configure(scrollregion=window_canvas.bbox("all")))
-
-        tempFrame = Frame(window_frame)
-
-        window_canvas.create_window((0,0), window=tempFrame, anchor="nw")
-        tempFrame.pack(side=tk.TOP, expand=1, anchor='w')
+        tempFrame = Frame(window_frame, width=100, height=200)
+        tempFrame.grid(row=0, column=0, padx=10, pady=5)
 
         figure = Figure(figsize=(6, 4), dpi=100)
 
-        tempFigure_canvas = FigureCanvasTkAgg(figure, window_frame)
+        tempFigure_canvas = FigureCanvasTkAgg(figure, tempFrame)
 
-        tempFigure_canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=True)
         toolbar = NavigationToolbar2Tk(tempFigure_canvas, tempFrame)
         toolbar.update()
+        tempFigure_canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=True)
         temp_summarize = Button(tempFrame, text='Summarize', command= self.temp_summarize())
         aggregate = Button(tempFrame, text='Aggregate')
         temp_summarize.pack(side=RIGHT)
         aggregate.pack(side=RIGHT)
         self.axes = figure.add_subplot()
 
-        acc_magFrame = Frame(window_frame)
+        acc_magFrame = Frame(window_frame, width=100, height=200)
 
-        window_canvas.create_window((0,0), window=acc_magFrame, anchor="nw")
-        acc_magFrame.pack(side=tk.TOP, expand=1, anchor='w')
+        acc_magFrame.grid(row=1, column=0, padx=10, pady=5)
 
-        acc_magFrame_canvas = FigureCanvasTkAgg(figure, window_frame)
+        acc_magFrame_canvas = FigureCanvasTkAgg(figure, acc_magFrame)
         toolbar = NavigationToolbar2Tk(acc_magFrame_canvas, acc_magFrame)
         toolbar.update()
         acc_magFrame_canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=True)
@@ -59,12 +48,11 @@ class UserInterface(tk.Tk):
         acc_summarize.pack(side=RIGHT)
         self.axes = figure.add_subplot()
 
-        on_wrist_Frame = Frame(window_frame)
+        on_wrist_Frame = Frame(window_frame, width=100, height=200)
 
-        window_canvas.create_window((0, 0), window=on_wrist_Frame, anchor="nw")
-        on_wrist_Frame.pack(side=tk.TOP, expand=1, anchor='w')
+        on_wrist_Frame.grid(row=2, column=0, padx=10, pady=5)
 
-        on_wrist_Frame_canvas = FigureCanvasTkAgg(figure, window_frame)
+        on_wrist_Frame_canvas = FigureCanvasTkAgg(figure, on_wrist_Frame)
         toolbar = NavigationToolbar2Tk(on_wrist_Frame_canvas, on_wrist_Frame)
         toolbar.update()
         on_wrist_Frame_canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=True)
@@ -72,12 +60,11 @@ class UserInterface(tk.Tk):
         on_wrist_summarize.pack(side=RIGHT)
         self.axes = figure.add_subplot()
 
-        step_count_Frame = Frame(window_frame)
+        step_count_Frame = Frame(window_frame, width=100, height=200)
 
-        window_canvas.create_window((0, 0), window=step_count_Frame, anchor="nw")
-        step_count_Frame.pack(side=tk.TOP, expand=1, anchor='w')
+        step_count_Frame.grid(row=0, column=2, padx=10, pady=5)
 
-        step_count_Frame_canvas = FigureCanvasTkAgg(figure, window_frame)
+        step_count_Frame_canvas = FigureCanvasTkAgg(figure, step_count_Frame)
         toolbar = NavigationToolbar2Tk(step_count_Frame_canvas, step_count_Frame)
         toolbar.update()
         step_count_Frame_canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=True)
@@ -85,12 +72,11 @@ class UserInterface(tk.Tk):
         step_count_summarize.pack(side=RIGHT)
         self.axes = figure.add_subplot()
 
-        rest_Frame = Frame(window_frame)
+        rest_Frame = Frame(window_frame, width=100, height=200)
 
-        window_canvas.create_window((0, 0), window=rest_Frame, anchor="nw")
-        rest_Frame.pack(side=tk.TOP, expand=1, anchor='w')
+        rest_Frame.grid(row=0, column=1, padx=10, pady=5)
 
-        rest_Frame_canvas = FigureCanvasTkAgg(figure, window_frame)
+        rest_Frame_canvas = FigureCanvasTkAgg(figure, rest_Frame)
         toolbar = NavigationToolbar2Tk(rest_Frame_canvas, rest_Frame)
         toolbar.update()
         rest_Frame_canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=True)
@@ -98,12 +84,11 @@ class UserInterface(tk.Tk):
         rest_summarize.pack(side=RIGHT)
         self.axes = figure.add_subplot()
 
-        EDA_Frame = Frame(window_frame)
+        EDA_Frame = Frame(window_frame, width=100, height=200)
 
-        window_canvas.create_window((0, 0), window=EDA_Frame, anchor="nw")
-        EDA_Frame.pack(side=tk.TOP, expand=1, anchor='w')
+        EDA_Frame.grid(row=1, column=1, padx=10, pady=5)
 
-        EDA_Frame_canvas = FigureCanvasTkAgg(figure, self)
+        EDA_Frame_canvas = FigureCanvasTkAgg(figure, EDA_Frame)
         toolbar = NavigationToolbar2Tk(EDA_Frame_canvas, EDA_Frame)
         toolbar.update()
         EDA_Frame_canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=True)
@@ -111,12 +96,11 @@ class UserInterface(tk.Tk):
         EDA_summarize.pack(side=RIGHT)
         self.axes = figure.add_subplot()
 
-        Movement_Frame = Frame(window_frame)
+        Movement_Frame = Frame(window_frame, width=100, height=200)
 
-        window_canvas.create_window((0, 0), window=Movement_Frame, anchor="nw")
-        Movement_Frame.pack(side=tk.TOP, expand=1, anchor='w')
+        Movement_Frame.grid(row=2, column=1, padx=10, pady=5)
 
-        Movement_Frame_canvas = FigureCanvasTkAgg(figure, self)
+        Movement_Frame_canvas = FigureCanvasTkAgg(figure, Movement_Frame)
         toolbar = NavigationToolbar2Tk(Movement_Frame_canvas, Movement_Frame)
         toolbar.update()
         Movement_Frame_canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=True)
