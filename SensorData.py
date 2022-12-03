@@ -4,9 +4,10 @@ from datetime import *
 
 
 class metaData:
-    def __init__(self, DateTimeUTC, TimezoneM, App, AppVersion, OS, OSVersion, GTCS):
+    def __init__(self, DateTimeUTC, TimezoneM, FWVer, App, AppVersion, OS, OSVersion, GTCS):
         self.dateTimeUTC = DateTimeUTC
         self.timezoneM = TimezoneM
+        self.firmwareVer = FWVer
         self.app = App
         self.appVersion = AppVersion
         self.OS = OS
@@ -275,8 +276,8 @@ class sensorData:
         df = df.reset_index()
         ct = 0
         for index, row in df.iterrows():
-            sp = sensorPoint(row['DateTimeUTC'], row['TimezoneM'], row['App'],
-                             row['AppVersion'], row['OS'], row['OSVersion'], row['GTCS'])
+            sp = metaData(row['DateTime (UTC)'], row['Timezone (minutes)'], row['FW Version'], row['App'],
+                             row['App Version'], row['OS'], row['OS Version'], row['GTCS Algorithm Version'])
             self.MDarr.append(sp)
             ct += 1
         self.MDSize = ct + 1
