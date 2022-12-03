@@ -23,6 +23,9 @@ class UserInterface(tk.Tk):
         tempFrame = Frame(window_frame, width=100, height=200)
         tempFrame.grid(row=0, column=0, padx=10, pady=5)
 
+        label1 = Label(tempFrame, text="Temperature")
+        label1.pack()
+
         figure = Figure(figsize=(3, 2), dpi=100)
 
         tempFigure_canvas = FigureCanvasTkAgg(figure, tempFrame)
