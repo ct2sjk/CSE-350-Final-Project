@@ -17,9 +17,9 @@ The save button allow you to save an image of the current frame
 
 There is also a display of the x and y value of where your mouse is at on the graph 
 
-The aggreagate button gives you an aggregate report of all of the data
+The aggregate button gives you an aggregate report of all of the data
 
-The summarize button will sumaarize the data of a single graph
+The summarize button will summarize the data of a single graph
 
 There is also a slider button to adjust each of the subplots parameters 
 

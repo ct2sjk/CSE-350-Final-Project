@@ -1,14 +1,14 @@
 import tkinter as tk
 from tkinter import *
-from tkinter import ttk
-import pandas as pd
+import matplotlib
+
 import SensorData as SD
 
-matplotlib.use('TKAgg')
+matplotlib.use('TkAgg')
 
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationToolbar2Tk)
-from matplotlib.widgets import Slider
+
 
 class UserInterface(tk.Tk):
 
