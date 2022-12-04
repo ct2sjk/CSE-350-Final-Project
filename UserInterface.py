@@ -26,7 +26,7 @@ class UserInterface(tk.Tk):
 
         tempFrame = Frame(window_frame, width=100, height=200)
 
-        label1 = Label(tempFrame, text="Temperture")
+        label1 = Label(tempFrame, text="Temperature")
         label1.pack()
 
         tempFrame.grid(row=0, column=0, padx=10, pady=5)
