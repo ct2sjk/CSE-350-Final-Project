@@ -11,5 +11,5 @@ if __name__ == '__main__':
     #sd.compileMeta()
     gd = sd.compileGraphData()
 
-    ui = UI.UserInterface(sd,gd)
-    ui.mainloop()
+    self= UI.UserInterface(sd,gd)
+    self.mainloop()
