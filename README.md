@@ -24,10 +24,10 @@ The summarize button will summarize the data of a single graph
 There is also a slider button to adjust each of the subplots parameters 
 
 # Activity Analyzer
-Initializes the program and creates the initial graphs
+Initializes the program and creates the initial graphs. Responsible for loading the csv data into the file. 
 
 # User Interface
-Controls the user interface such as the buttons and calls that then go into the data handling. Updates the graphs depending on the button presses and responds to the mouse activity
+Controls the user interface such as the buttons and calls that then go into the data handling. Updates the graphs depending on the button presses and responds to the mouse activity. 
 
 # Data Handling
-Handles the background data for each of the buttons such as what data is to be passed through with the aggregate and summarize function
+Handles the background data for each of the buttons such as what data is to be passed through with the aggregate and summarize function. 
