@@ -1,14 +1,13 @@
 import tkinter as tk
 from tkinter import *
 import matplotlib
+from matplotlib.backends._backend_tk import NavigationToolbar2Tk
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from matplotlib.figure import Figure
+
+matplotlib.use('tkAgg')
 
 import SensorData as SD
-
-matplotlib.use('TkAgg')
-
-from matplotlib.figure import Figure
-from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationToolbar2Tk)
-
 
 class UserInterface(tk.Tk):
 
