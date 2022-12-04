@@ -89,7 +89,7 @@ class UserInterface(tk.Tk):
 
         rest_Frame = Frame(window_frame, width=100, height=200)
 
-        label1 = Label(rest_Frame, text="Rest")
+        label1 = Label(rest_Frame, text="On Wrist")
         label1.pack()
 
         rest_Frame.grid(row=0, column=1, padx=10, pady=5)
@@ -118,9 +118,6 @@ class UserInterface(tk.Tk):
         self.axes = figure.add_subplot()
 
         Movement_Frame = Frame(window_frame, width=100, height=200)
-
-        label1 = Label(Movement_Frame, text="Movement Intensity")
-        label1.pack()
 
         Movement_Frame.grid(row=2, column=1, padx=10, pady=5)
 
