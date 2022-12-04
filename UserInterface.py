@@ -1,13 +1,17 @@
 import tkinter as tk
 from tkinter import *
+
+import pip
+
+pip.main(["install","matplotlib"])
+pip.main(["install","pandas"])
 import matplotlib
-import pandas as pd
 
 matplotlib.use('TKAgg')
 
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationToolbar2Tk)
-from matplotlib.widgets import Slider
+
 
 class UserInterface(tk.Tk):
 
