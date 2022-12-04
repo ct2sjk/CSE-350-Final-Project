@@ -1,38 +1,35 @@
 import tkinter as tk
 from tkinter import *
 
+import pip
 
+pip.main(["install","matplotlib"])
+pip.main(["install","pandas"])
 import matplotlib
-import pandas as pd
 
-import SensorData
+matplotlib.use('TKAgg')
 
-matplotlib.use('TkAgg')
-from matplotlib.backends.backend_tkagg import NavigationToolbar2Tk
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
-
-matplotlib.use('tkAgg')
+from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationToolbar2Tk)
 
 
 class UserInterface(tk.Tk):
 
-    def __init__(self, sd, gd):
+    def __init__(self):
         super().__init__()
-        self.sd = sd
-        self.gd = gd
-        self.gdTemp = gd
         self.title('Sensor Data')
         self.geometry('1920x1080')
 
         window_frame = Frame(self)
         window_frame.pack()
 
-        tempFrame = Frame(window_frame, width=100, height=200)
-        tempFrame.grid(row=0, column=0, padx=10, pady=5)
 
-        label1 = Label(tempFrame, text="Temperature")
+        tempFrame = Frame(window_frame, width=100, height=200)
+
+        label1 = Label(tempFrame, text="Temperture")
         label1.pack()
+
+        tempFrame.grid(row=0, column=0, padx=10, pady=5)
 
         figure = Figure(figsize=(3, 2), dpi=100)
 
@@ -41,7 +38,7 @@ class UserInterface(tk.Tk):
         toolbar = NavigationToolbar2Tk(tempFigure_canvas, tempFrame)
         toolbar.update()
         tempFigure_canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=True)
-        temp_summarize = Button(tempFrame, text='Summarize', command=self.temp_summarize())
+        temp_summarize = Button(tempFrame, text='Summarize', command= self.temp_summarize())
         aggregate = Button(tempFrame, text='Aggregate')
         temp_summarize.pack(side=RIGHT)
         aggregate.pack(side=RIGHT)
@@ -52,7 +49,7 @@ class UserInterface(tk.Tk):
         label1 = Label(acc_magFrame, text="Acc Magnitude Average")
         label1.pack()
 
-        acc_magFrame.grid(row=1, column=0, padx=10, pady=10)
+        acc_magFrame.grid(row=1, column=0, padx=10, pady=5)
 
         acc_magFrame_canvas = FigureCanvasTkAgg(figure, acc_magFrame)
         toolbar = NavigationToolbar2Tk(acc_magFrame_canvas, acc_magFrame)
@@ -94,7 +91,7 @@ class UserInterface(tk.Tk):
 
         rest_Frame = Frame(window_frame, width=100, height=200)
 
-        label1 = Label(rest_Frame, text="On Wrist")
+        label1 = Label(rest_Frame, text="Rest")
         label1.pack()
 
         rest_Frame.grid(row=0, column=1, padx=10, pady=5)
@@ -123,7 +120,8 @@ class UserInterface(tk.Tk):
         self.axes = figure.add_subplot()
 
         Movement_Frame = Frame(window_frame, width=100, height=200)
-
+        label1 = Label(Movement_Frame, text="Movement Intensity")
+        label1.pack()
         Movement_Frame.grid(row=2, column=1, padx=10, pady=5)
 
         Movement_Frame_canvas = FigureCanvasTkAgg(figure, Movement_Frame)
@@ -137,7 +135,7 @@ class UserInterface(tk.Tk):
         # add data here
 
         # function to add data to graphs
-        self.df = pd.DataFrame(DataSet, columns=['Summarize', 'Aggregate'])
+        # self.df= pd.DataFrame(data, columns=[' ', ' '])
 
         # temp
         # acc_mag
@@ -147,90 +145,27 @@ class UserInterface(tk.Tk):
         # EDA
         # Movement intensity
 
-    def addNewData(self, summaryFile, metaDataFile):
-        # add window for compiling new data with two fields
-        # fields open a browse window for file explorer to specify files
-        # compile button calls method
-        self.sd = SD.sensorData(summaryFile, metaDataFile)
-        self.sd.compileSensor()
-        self.sd.compileMeta()
-        self.gd = self.sd.compileGraphData()
-        self.callback()
-
-    def aggregateData(self, DateS, DateE, TimeS, TimeE):
-        # returnData = [tempAvrg, ACCMagAvrg, EDAAvrg, onWristAvrg, movIntenAvrg, stepCtAvrg, restAvrg]
-        # add window to aggregate based on timeframe
-        # window needs start date, end date, start time, and end time
-        # add start button on window
-        returnData = self.sd.aggregate(DateS, DateE, TimeS, TimeE)
-        # somehow plot the return data over graphs
-        self.callback()
-
-    def queryData(self, DateS, DateE, TimeS, TimeE):
-        # add window to query based on timeframe
-        # window needs start date, end date, start time, and end time
-        # add start button on window
-        self.gd = self.sd.queryGraph(DateS, DateE, TimeS, TimeE)
-        self.callback()
-
-    def switchGraphData(self):
-        # switches between query graphs and full graphs
-        gdq = self.gd
-        self.gd = self.gdTemp
-        self.gdTemp = gdq
-        self.callback()
-
     def temp_summarize(self):
-        # returnData = [sum, highest, lowest]
-        returnData = self.sd.summarize('Temp')
-        # somehow plot the return data over graphs
-        self.callback()
-
+        pass
     def acc_mag_summarize(self):
-        # returnData = [sum, highest, lowest]
-        returnData = self.sd.summarize('ACCMagnitude')
-        # somehow plot the return data over graphs
-        self.callback()
-
+        pass
     def on_wrist_summarize(self):
-        # returnData = [sum, highest, lowest]
-        returnData = self.sd.summarize('OnWrist')
-        # somehow plot the return data over graphs
-        self.callback()
-
+        pass
     def step_count_summarize(self):
-        # returnData = [sum, highest, lowest]
-        returnData = self.sd.summarize('StepCount')
-        # somehow plot the return data over graphs
-        self.callback()
-
+        pass
     def rest_summarize(self):
-        # returnData = [sum, highest, lowest]
-        returnData = self.sd.summarize('Rest')
-        # somehow plot the return data over graphs
-        self.callback()
-
+        pass
     def EDA_summarize(self):
-        # returnData = [sum, highest, lowest]
-        returnData = self.sd.summarize('EDA')
-        # somehow plot the return data over graphs
-        self.callback()
-
+        pass
     def Movement_summarize(self):
-        # returnData = [sum, highest, lowest]
-        returnData = self.sd.summarize('MovInten')
-        # somehow plot the return data over graphs
-        self.callback()
+        pass
 
     def callback(self):
-        # debug
         self.axes.clear()
         self.df.plot(y='y-axis', x='time', ax=self.axes)
         self.axes.set_title('Sensor Data')
         self.axes.set_ylabel('Y-Axis')
         self.axes.figure.canvas.draw()
-
-
 if __name__ == '__main__':
-    self = UserInterface(sd=SensorData, gd=matplotlib)
-    self.mainloop()
+    ui = UserInterface()
+    ui.mainloop()
