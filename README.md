@@ -1,11 +1,11 @@
 # CSE-350-Final-Project
-Final project for UofL-CSE350/550. This project centered around learning the software development process including documentation and development. We were tasked to create an interface for the visualization and analysis of data from excercise trackers (https://support.empatica.com/hc/en-us/articles/360028646091).
+Final project for UofL-CSE350/550. This project centered around learning the software development process including documentation and development. We were tasked to create an interface for the visualization and analysis of data from exercise trackers (https://support.empatica.com/hc/en-us/articles/360028646091).
 
 In order to load your data into the application place your csv files into the project folder with both metadata.csv and dummy data.csv.
 
-After your data is loaded into the project you will be met with a variety of displayed graghs with yor biometrics diplayed. The x axis is time with the Y axis being your different data so you can compare trends and analyze your general health using the application. Below the graghs you will see a variety of buttons that provide you different functions to work with your data. 
+After your data is loaded into the project you will be met with a variety of displayed graphs with yor biometrics displayed. The x axis is time with the Y axis being your different data so you can compare trends and analyze your general health using the application. Below the graphs you will see a variety of buttons that provide you different functions to work with your data.
 
-The Home button will reset the viewframe of the graph to its original position if you have made any changes
+The Home button will reset the view-frame of the graph to its original position if you have made any changes
 
 The left and right arrows will change between the different views moving either forward or backward
 
