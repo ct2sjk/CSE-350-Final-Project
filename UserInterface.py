@@ -1,13 +1,11 @@
 import tkinter as tk
 from tkinter import *
-from tkinter import ttk
-from tkinter import filedialog
-from tkinter import messagebox
-from tkinter import scrolledtext
 
 
 import matplotlib
 import pandas as pd
+
+import SensorData
 
 matplotlib.use('TkAgg')
 from matplotlib.backends.backend_tkagg import NavigationToolbar2Tk
@@ -15,8 +13,6 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 
 matplotlib.use('tkAgg')
-
-import SensorData as SD
 
 
 class UserInterface(tk.Tk):
@@ -186,13 +182,13 @@ class UserInterface(tk.Tk):
 
     def temp_summarize(self):
         # returnData = [sum, highest, lowest]
-        returnData = self.SD.summarize('Temp')
+        returnData = self.sd.summarize('Temp')
         # somehow plot the return data over graphs
         self.callback()
 
     def acc_mag_summarize(self):
         # returnData = [sum, highest, lowest]
-        returnData = self.SD.summarize('ACCMagnitude')
+        returnData = self.sd.summarize('ACCMagnitude')
         # somehow plot the return data over graphs
         self.callback()
 
