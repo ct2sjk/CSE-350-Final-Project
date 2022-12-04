@@ -1,11 +1,13 @@
 import tkinter as tk
 from tkinter import *
 
+file = open("DummyData.csv")
+numpy_array = np.loadtxt(file, delimiter=",")
 
 import matplotlib
 import pandas as pd
-
-import SensorData
+import numpy as np
+import SensorData as SD
 
 matplotlib.use('TkAgg')
 from matplotlib.backends.backend_tkagg import NavigationToolbar2Tk
@@ -232,5 +234,5 @@ class UserInterface(tk.Tk):
 
 
 if __name__ == '__main__':
-    self = UserInterface(sd=SensorData, gd=matplotlib)
+    self = UserInterface(sd=SD, gd=matplotlib)
     self.mainloop()
