@@ -25,7 +25,7 @@ class UserInterface(tk.Tk):
         window_frame.pack(expand=True,fill=BOTH)
 
 
-        menu_frame =  Frame(self.root, width=200, height=400)
+        menu_frame = Frame(self.root, width=200, height=400)
         aggregate = Button(menu_frame, text='Aggregate')
         aggregate.pack(side=TOP)
     
