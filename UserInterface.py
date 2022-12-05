@@ -25,8 +25,9 @@ class UserInterface(tk.Tk):
         window_frame.pack(expand=True,fill=BOTH)
 
 
-        menu_frame = Frame(self.root, width=200, height=400)
-        aggregate = Button(menu_frame, text='Aggregate')
+        aggregate_frame = Frame(window_frame, width=100, height=200, highlightbackground='blue', highlightthickness=2)
+        aggregate_frame.grid(row=0, column=3, padx=3)
+        aggregate = Button(aggregate_frame, text='Aggregate')
         aggregate.pack(side=TOP)
     
 
@@ -156,18 +157,6 @@ class UserInterface(tk.Tk):
         self.axMovInten = figure7.add_subplot()
         gd.dfMovInten.plot(x='DateTime', y='Movement Intensity', ax=self.axMovInten)
 
-        # add data here
-
-        # function to add data to graphs
-        # self.df= pd.DataFrame(data, columns=[' ', ' '])
-
-        # temp
-        # acc_mag
-        # on_wrist
-        # step_count
-        # rest
-        # EDA
-        # Movement intensity
         plt.show()
     def addNewData(self, summaryFile, metaDataFile):
     #add window for compiling new data with two fields
