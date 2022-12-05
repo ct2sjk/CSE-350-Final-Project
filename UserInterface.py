@@ -46,7 +46,8 @@ class UserInterface(tk.Tk):
         aggregate = Button(tempFrame, text='Aggregate')
         temp_summarize.pack(side=RIGHT)
         aggregate.pack(side=RIGHT)
-        self.axes = figure.add_subplot()
+        self.axes = figure.add_subplot(321)
+        gd.dfTemp.plot(x='DateTime', y='Temp', ax=self.axes)
 
         acc_magFrame = Frame(window_frame, width=100, height=200)
 
@@ -149,15 +150,15 @@ class UserInterface(tk.Tk):
         # EDA
         # Movement intensity
 
-        def addNewData(self, summaryFile, metaDataFile):
-        #add window for compiling new data with two fields
-        #fields open a browse window for file explorer to specify files
-        #compile button calls method
-            self.sd = SD.sensorData(summaryFile,metaDataFile)
-            self.sd.compileSensor()
-            self.sd.compileMeta()
-            self.gd = self.sd.compileGraphData()
-            self.callback()
+    def addNewData(self, summaryFile, metaDataFile):
+    #add window for compiling new data with two fields
+    #fields open a browse window for file explorer to specify files
+    #compile button calls method
+        self.sd = SD.sensorData(summaryFile,metaDataFile)
+        self.sd.compileSensor()
+        self.sd.compileMeta()
+        self.gd = self.sd.compileGraphData()
+        self.callback()
 
     def aggregateData(self, DateS, DateE, TimeS, TimeE):
         #returnData = [tempAvrg, ACCMagAvrg, EDAAvrg, onWristAvrg, movIntenAvrg, stepCtAvrg, restAvrg]
