@@ -15,7 +15,7 @@ class UserInterface(tk.Tk):
     def __init__(self):
         super().__init__()
         self.title('Sensor Data')
-        self.geometry('1920x1080')
+        self.geometry('1000x800')
 
         window_frame = Frame(self)
         window_frame.pack()
@@ -35,7 +35,7 @@ class UserInterface(tk.Tk):
         aggregate = Button(tempFrame, text='Aggregate')
         temp_summarize.pack(side=RIGHT)
         aggregate.pack(side=RIGHT)
-
+        self.axes = figure.add_subplot()
 
         acc_magFrame = Frame(window_frame, width=100, height=200)
 
@@ -47,7 +47,7 @@ class UserInterface(tk.Tk):
         acc_magFrame_canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=True)
         acc_summarize = Button(acc_magFrame, text='Summarize', command=self.acc_mag_summarize())
         acc_summarize.pack(side=RIGHT)
-
+        self.axes = figure.add_subplot()
 
         on_wrist_Frame = Frame(window_frame, width=100, height=200)
 
@@ -59,7 +59,7 @@ class UserInterface(tk.Tk):
         on_wrist_Frame_canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=True)
         on_wrist_summarize = Button(on_wrist_Frame, text='Summarize', command=self.on_wrist_summarize())
         on_wrist_summarize.pack(side=RIGHT)
-
+        self.axes = figure.add_subplot()
 
         step_count_Frame = Frame(window_frame, width=100, height=200)
 
@@ -71,7 +71,7 @@ class UserInterface(tk.Tk):
         step_count_Frame_canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=True)
         step_count_summarize = Button(step_count_Frame, text='Summarize', command=self.step_count_summarize())
         step_count_summarize.pack(side=RIGHT)
-
+        self.axes = figure.add_subplot()
 
         rest_Frame = Frame(window_frame, width=100, height=200)
 
@@ -83,7 +83,7 @@ class UserInterface(tk.Tk):
         rest_Frame_canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=True)
         rest_summarize = Button(rest_Frame, text='Summarize', command=self.rest_summarize())
         rest_summarize.pack(side=RIGHT)
-
+        self.axes = figure.add_subplot()
 
         EDA_Frame = Frame(window_frame, width=100, height=200)
 
@@ -95,7 +95,7 @@ class UserInterface(tk.Tk):
         EDA_Frame_canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=True)
         EDA_summarize = Button(EDA_Frame, text='Summarize', command=self.EDA_summarize())
         EDA_summarize.pack(side=RIGHT)
-
+        self.axes = figure.add_subplot()
 
         Movement_Frame = Frame(window_frame, width=100, height=200)
 
@@ -107,7 +107,7 @@ class UserInterface(tk.Tk):
         Movement_Frame_canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=True)
         Movement_summarize = Button(Movement_Frame, text='Summarize', command=self.Movement_summarize())
         Movement_summarize.pack(side=RIGHT)
-
+        self.axes = figure.add_subplot()
 
         # add data here
 
