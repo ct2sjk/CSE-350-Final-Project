@@ -76,7 +76,7 @@ class graphData:
                               'On Wrist': obj.onWrist
                               })
                     iter += 1
-                self.dfOnWirst = pd.DataFrame(d)
+                self.dfOnWrist = pd.DataFrame(d)
             case 'MovInten':
                 for obj in self.SDarr:
                     d.append({'DateTime': self.parseDateTime(obj.date, obj.time),
