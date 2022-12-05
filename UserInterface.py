@@ -232,6 +232,4 @@ class UserInterface(tk.Tk):
         self.axes.set_title('Sensor Data')
         self.axes.set_ylabel('Y-Axis')
         self.axes.figure.canvas.draw()
-if __name__ == '__main__':
-    ui = UserInterface()
-    ui.mainloop()
+
