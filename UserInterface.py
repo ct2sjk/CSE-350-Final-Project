@@ -1,10 +1,7 @@
 import tkinter as tk
 from tkinter import *
 
-import pip
 
-pip.main(["install","matplotlib"])
-pip.main(["install","pandas"])
 import matplotlib
 
 matplotlib.use('TKAgg')
