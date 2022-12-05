@@ -12,4 +12,7 @@ if __name__ == '__main__':
     gd = sd.compileGraphData()
 
     self= UI.UserInterface(sd,gd)
-    self.mainloop()
+    ct = 0
+    if ct < 1:
+        self.mainloop()
+        ct+=1

@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import *
 import SensorData as SD
 import matplotlib.pyplot as plt
+import matplotlib as mpl
 
 import matplotlib
 
@@ -10,19 +11,24 @@ matplotlib.use('TKAgg')
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationToolbar2Tk)
 
-
 class UserInterface(tk.Tk):
 
     def __init__(self,sd,gd):
-        super().__init__()
-        self.title('Sensor Data')
-        self.geometry('1920x1080')
+        root = Tk()
+        root.geometry('1920x1080')
+        root.title('Sensor Data')
         self.sd = sd
         self.gd = gd
         self.gdTemp = gd
 
-        window_frame = Frame(self)
-        window_frame.pack()
+        window_frame = Frame(root)
+        window_frame.pack(expand=True,fill=BOTH)
+
+
+        menu_frame =  Frame(window_frame, width=200, height=400)
+        aggregate = Button(menu_frame, text='Aggregate')
+        aggregate.pack(side=TOP)
+    
 
 
         tempFrame = Frame(window_frame, width=100, height=200)
@@ -40,9 +46,7 @@ class UserInterface(tk.Tk):
         toolbar.update()
         tempFigure_canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=True)
         temp_summarize = Button(tempFrame, text='Summarize', command= self.temp_summarize())
-        aggregate = Button(tempFrame, text='Aggregate')
-        temp_summarize.pack(side=RIGHT)
-        aggregate.pack(side=RIGHT)
+        temp_summarize.pack(side=RIGHT)        
         self.axTemp = figure1.add_subplot()
         gd.dfTemp.plot(x='DateTime', y='Temp', ax=self.axTemp)
 
