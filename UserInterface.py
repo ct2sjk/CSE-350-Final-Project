@@ -1,8 +1,7 @@
 import tkinter as tk
 from tkinter import *
 
-file = open("DummyData.csv")
-numpy_array = np.loadtxt(file, delimiter=",")
+
 
 import matplotlib
 import pandas as pd
