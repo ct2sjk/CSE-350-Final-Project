@@ -14,18 +14,18 @@ from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationTool
 class UserInterface(tk.Tk):
 
     def __init__(self,sd,gd):
-        root = Tk()
-        root.geometry('1920x1080')
-        root.title('Sensor Data')
+        self.root = Tk()
+        self.root.geometry('1920x1080')
+        self.root.title('Sensor Data')
         self.sd = sd
         self.gd = gd
         self.gdTemp = gd
 
-        window_frame = Frame(root)
+        window_frame = Frame(self.root)
         window_frame.pack(expand=True,fill=BOTH)
 
 
-        menu_frame =  Frame(window_frame, width=200, height=400)
+        menu_frame =  Frame(self.root, width=200, height=400)
         aggregate = Button(menu_frame, text='Aggregate')
         aggregate.pack(side=TOP)
     
