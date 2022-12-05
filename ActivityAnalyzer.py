@@ -8,8 +8,11 @@ import UserInterface as UI
 if __name__ == '__main__':
     sd = SD.sensorData('DummyData.csv', 'MetaData.csv')
     sd.compileSensor()
-    #sd.compileMeta()
+    sd.compileMeta()
     gd = sd.compileGraphData()
 
-    self= UI.UserInterface(sd,gd)
-    self.mainloop()
+    ui = UI.UserInterface(sd,gd)
+    ct = 0
+    if ct < 1:
+        ui.root.mainloop()
+        ct+=1
