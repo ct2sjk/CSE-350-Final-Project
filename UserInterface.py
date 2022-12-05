@@ -16,7 +16,6 @@ class UserInterface(tk.Tk):
         super().__init__()
         self.title('Sensor Data')
         self.geometry('1920x1080')
-
         window_frame = Frame(self)
         window_frame.pack()
 

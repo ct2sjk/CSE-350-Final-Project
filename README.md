@@ -31,3 +31,4 @@ Controls the user interface such as the buttons and calls that then go into the 
 
 # Data Handling
 Handles the background data for each of the buttons such as what data is to be passed through with the aggregate and summarize function. 
+
