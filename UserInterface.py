@@ -4,7 +4,11 @@ import SensorData as SD
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 import numpy as np
+import pandas
+import tkcalendar
+from tkcalendar import Calendar, DateEntry
 
+'DummyData'
 import matplotlib
 
 matplotlib.use('TKAgg')
@@ -15,6 +19,7 @@ from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationTool
 class UserInterface(tk.Tk):
 
     def __init__(self,sd,gd):
+        self.inputtxt = tk
         self.root = Tk()
         self.root.geometry('1920x1080')
         self.root.title('Sensor Data')
@@ -24,13 +29,6 @@ class UserInterface(tk.Tk):
 
         window_frame = Frame(self.root)
         window_frame.pack(expand=True,fill=BOTH)
-
-
-        aggregate_frame = Frame(window_frame, width=100, height=200, highlightbackground='blue', highlightthickness=2)
-        aggregate_frame.grid(row=0, column=3, padx=3)
-        aggregate = Button(aggregate_frame, text='Aggregate')
-        aggregate.pack(side=TOP)
-    
 
 
         tempFrame = Frame(window_frame, width=100, height=200)
@@ -158,7 +156,36 @@ class UserInterface(tk.Tk):
         self.axMovInten = figure7.add_subplot()
         gd.dfMovInten.plot(x='DateTime', y='Movement Intensity', ax=self.axMovInten)
 
+        QueryFrame = Frame(window_frame, width=100, height=200)
+
+        label1 = Label(QueryFrame, text="Query:")
+        label1.pack()
+
+
+        inputtxt = tk.Text(QueryFrame,
+                           height=2,
+                           width=20)
+        inputtxt.pack()
+        inputtxt = tk.Text(QueryFrame,
+                           height=2,
+                           width=20)
+        inputtxt.pack()
+        inputtxt = tk.Text(QueryFrame,
+                           height=2,
+                           width=20)
+        inputtxt.pack()
+        inputtxt = tk.Text(QueryFrame,
+                           height=2,
+                           width=20)
+        inputtxt.pack()
+
+        aggregate = Button(QueryFrame, text='Aggregate')
+        aggregate.pack(side=TOP)
+        QueryFrame.grid(row=1, column=2, padx=10, pady=5)
+
+
         plt.show()
+
     def addNewData(self, summaryFile, metaDataFile):
     #add window for compiling new data with two fields
     #fields open a browse window for file explorer to specify files
