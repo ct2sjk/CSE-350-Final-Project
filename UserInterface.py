@@ -5,10 +5,7 @@ import matplotlib.pyplot as plt
 import matplotlib as mpl
 import numpy as np
 import pandas
-import tkcalendar
-from tkcalendar import Calendar, DateEntry
 
-'DummyData'
 import matplotlib
 
 matplotlib.use('TKAgg')
@@ -255,9 +252,5 @@ class UserInterface(tk.Tk):
         #somehow plot the return data over graphs
         #self.callback()
     def callback(self):
-        self.axes.clear()
-        self.df.plot(y='y-axis', x='time', ax=self.axes)
-        self.axes.set_title('Sensor Data')
-        self.axes.set_ylabel('Y-Axis')
-        self.axes.figure.canvas.draw()
+        pass
 
