@@ -183,7 +183,7 @@ class UserInterface(tk.Tk):
         aggregate.pack(side=TOP)
 
 
-        Compile_Frame = Frame(window_frame, width=100, height=200, padx=10, pady=5)
+        Compile_Frame = Frame(window_frame, width=100, height=200)
         Compile_Frame.grid(row=2, column=2, padx=10, pady=5)
         label1 = Label(Compile_Frame, text="Menu:", padx=10, pady=5)
         label1.pack()
