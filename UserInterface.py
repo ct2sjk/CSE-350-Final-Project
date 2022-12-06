@@ -185,7 +185,7 @@ class UserInterface(tk.Tk):
 
         Compile_Frame = Frame(window_frame, width=100, height=200, padx=10, pady=5)
         Compile_Frame.grid(row=1, column=4, padx=10, pady=5)
-        label1 = Label(QueryFrame, text="Menu:", padx=20, pady=50)
+        label1 = Label(QueryFrame, text="Menu:", padx=20, pady=100)
         label1.pack()
 
         plt.show()
