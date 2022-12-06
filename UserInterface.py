@@ -226,6 +226,7 @@ class UserInterface(tk.Tk):
         #returnData = [sum, highest, lowest]
         returnData = self.sd.summarize('Temp')
         #somehow plot the return data over graphs
+        
         #self.callback()
     def acc_mag_summarize(self):
         #returnData = [sum, highest, lowest]
