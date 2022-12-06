@@ -45,7 +45,7 @@ class UserInterface(tk.Tk):
         temp_summarize = Button(tempFrame, text='Summarize', command= self.temp_summarize())
         temp_summarize.pack(side=RIGHT)        
         self.axTemp = figure1.add_subplot()
-        gd.dfTemp.plot(x='DateTime', y='Temp', ax=self.axTemp)
+        self.gd.dfTemp.plot(x='DateTime', y='Temp', ax=self.axTemp)
 
         acc_magFrame = Frame(window_frame, width=100, height=200)
 
@@ -63,7 +63,7 @@ class UserInterface(tk.Tk):
         acc_summarize = Button(acc_magFrame, text='Summarize', command=self.acc_mag_summarize())
         acc_summarize.pack(side=RIGHT)
         self.axACC = figure2.add_subplot()
-        gd.dfAcc.plot(x='DateTime', y='ACC Magnitude', ax=self.axACC)
+        self.gd.dfAcc.plot(x='DateTime', y='ACC Magnitude', ax=self.axACC)
 
         on_wrist_Frame = Frame(window_frame, width=100, height=200)
 
@@ -81,7 +81,7 @@ class UserInterface(tk.Tk):
         on_wrist_summarize = Button(on_wrist_Frame, text='Summarize', command=self.on_wrist_summarize())
         on_wrist_summarize.pack(side=RIGHT)
         self.axOnWrist = figure3.add_subplot()
-        gd.dfOnWrist.plot(x='DateTime', y='On Wrist', ax=self.axOnWrist)
+        self.gd.dfOnWrist.plot(x='DateTime', y='On Wrist', ax=self.axOnWrist)
 
         step_count_Frame = Frame(window_frame, width=100, height=200)
 
@@ -99,7 +99,7 @@ class UserInterface(tk.Tk):
         step_count_summarize = Button(step_count_Frame, text='Summarize', command=self.step_count_summarize())
         step_count_summarize.pack(side=RIGHT)
         self.axStepCt = figure4.add_subplot()
-        gd.dfStepCt.plot(x='DateTime', y='Step Count', ax=self.axStepCt)
+        self.gd.dfStepCt.plot(x='DateTime', y='Step Count', ax=self.axStepCt)
 
         rest_Frame = Frame(window_frame, width=100, height=200)
 
@@ -117,7 +117,7 @@ class UserInterface(tk.Tk):
         rest_summarize = Button(rest_Frame, text='Summarize', command=self.rest_summarize())
         rest_summarize.pack(side=RIGHT)
         self.axRest = figure5.add_subplot()
-        gd.dfRest.plot(x='DateTime', y='Rest', ax=self.axRest)
+        self.gd.dfRest.plot(x='DateTime', y='Rest', ax=self.axRest)
 
         EDA_Frame = Frame(window_frame, width=100, height=200)
 
@@ -135,7 +135,7 @@ class UserInterface(tk.Tk):
         EDA_summarize = Button(EDA_Frame, text='Summarize', command=self.EDA_summarize())
         EDA_summarize.pack(side=RIGHT)
         self.axEDA = figure6.add_subplot()
-        gd.dfEDA.plot(x='DateTime', y='EDA', ax=self.axEDA)
+        self.gd.dfEDA.plot(x='DateTime', y='EDA', ax=self.axEDA)
 
         Movement_Frame = Frame(window_frame, width=100, height=200)
         label1 = Label(Movement_Frame, text="Movement Intensity")
@@ -151,7 +151,7 @@ class UserInterface(tk.Tk):
         Movement_summarize = Button(Movement_Frame, text='Summarize', command=self.Movement_summarize())
         Movement_summarize.pack(side=RIGHT)
         self.axMovInten = figure7.add_subplot()
-        gd.dfMovInten.plot(x='DateTime', y='Movement Intensity', ax=self.axMovInten)
+        self.gd.dfMovInten.plot(x='DateTime', y='Movement Intensity', ax=self.axMovInten)
 
         QueryFrame = Frame(window_frame, width=100, height=200)
 
