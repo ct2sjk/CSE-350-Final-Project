@@ -16,7 +16,6 @@ from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationTool
 class UserInterface(tk.Tk):
 
     def __init__(self,sd,gd):
-        self.inputtxt = tk
         self.root = Tk()
         self.root.geometry('1920x1080')
         self.root.title('Sensor Data')
@@ -42,7 +41,7 @@ class UserInterface(tk.Tk):
         toolbar = NavigationToolbar2Tk(tempFigure_canvas, tempFrame)
         toolbar.update()
         tempFigure_canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=True)
-        temp_summarize = Button(tempFrame, text='Summarize', command= self.temp_summarize())
+        temp_summarize = Button(tempFrame, text='Summarize', command= self.temp_summarize)
         temp_summarize.pack(side=RIGHT)        
         self.axTemp = figure1.add_subplot()
         self.gd.dfTemp.plot(x='DateTime', y='Temp', ax=self.axTemp)
@@ -60,7 +59,7 @@ class UserInterface(tk.Tk):
         toolbar = NavigationToolbar2Tk(acc_magFrame_canvas, acc_magFrame)
         toolbar.update()
         acc_magFrame_canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=True)
-        acc_summarize = Button(acc_magFrame, text='Summarize', command=self.acc_mag_summarize())
+        acc_summarize = Button(acc_magFrame, text='Summarize', command=self.acc_mag_summarize)
         acc_summarize.pack(side=RIGHT)
         self.axACC = figure2.add_subplot()
         self.gd.dfAcc.plot(x='DateTime', y='ACC Magnitude', ax=self.axACC)
@@ -78,7 +77,7 @@ class UserInterface(tk.Tk):
         toolbar = NavigationToolbar2Tk(on_wrist_Frame_canvas, on_wrist_Frame)
         toolbar.update()
         on_wrist_Frame_canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=True)
-        on_wrist_summarize = Button(on_wrist_Frame, text='Summarize', command=self.on_wrist_summarize())
+        on_wrist_summarize = Button(on_wrist_Frame, text='Summarize', command=self.on_wrist_summarize)
         on_wrist_summarize.pack(side=RIGHT)
         self.axOnWrist = figure3.add_subplot()
         self.gd.dfOnWrist.plot(x='DateTime', y='On Wrist', ax=self.axOnWrist)
@@ -96,7 +95,7 @@ class UserInterface(tk.Tk):
         toolbar = NavigationToolbar2Tk(step_count_Frame_canvas, step_count_Frame)
         toolbar.update()
         step_count_Frame_canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=True)
-        step_count_summarize = Button(step_count_Frame, text='Summarize', command=self.step_count_summarize())
+        step_count_summarize = Button(step_count_Frame, text='Summarize', command=self.step_count_summarize)
         step_count_summarize.pack(side=RIGHT)
         self.axStepCt = figure4.add_subplot()
         self.gd.dfStepCt.plot(x='DateTime', y='Step Count', ax=self.axStepCt)
@@ -114,7 +113,7 @@ class UserInterface(tk.Tk):
         toolbar = NavigationToolbar2Tk(rest_Frame_canvas, rest_Frame)
         toolbar.update()
         rest_Frame_canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=True)
-        rest_summarize = Button(rest_Frame, text='Summarize', command=self.rest_summarize())
+        rest_summarize = Button(rest_Frame, text='Summarize', command=self.rest_summarize)
         rest_summarize.pack(side=RIGHT)
         self.axRest = figure5.add_subplot()
         self.gd.dfRest.plot(x='DateTime', y='Rest', ax=self.axRest)
@@ -132,7 +131,7 @@ class UserInterface(tk.Tk):
         toolbar = NavigationToolbar2Tk(EDA_Frame_canvas, EDA_Frame)
         toolbar.update()
         EDA_Frame_canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=True)
-        EDA_summarize = Button(EDA_Frame, text='Summarize', command=self.EDA_summarize())
+        EDA_summarize = Button(EDA_Frame, text='Summarize', command=self.EDA_summarize)
         EDA_summarize.pack(side=RIGHT)
         self.axEDA = figure6.add_subplot()
         self.gd.dfEDA.plot(x='DateTime', y='EDA', ax=self.axEDA)
@@ -148,7 +147,7 @@ class UserInterface(tk.Tk):
         toolbar = NavigationToolbar2Tk(Movement_Frame_canvas, Movement_Frame)
         toolbar.update()
         Movement_Frame_canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=True)
-        Movement_summarize = Button(Movement_Frame, text='Summarize', command=self.Movement_summarize())
+        Movement_summarize = Button(Movement_Frame, text='Summarize', command=self.Movement_summarize)
         Movement_summarize.pack(side=RIGHT)
         self.axMovInten = figure7.add_subplot()
         self.gd.dfMovInten.plot(x='DateTime', y='Movement Intensity', ax=self.axMovInten)
@@ -159,27 +158,26 @@ class UserInterface(tk.Tk):
         label1.pack()
 
 
-        inputtxt = tk.Text(QueryFrame,
+        self.inputtxt1 = tk.Text(QueryFrame,
                            height=2,
                            width=20)
-        inputtxt.pack()
-        inputtxt = tk.Text(QueryFrame,
+        self.inputtxt1.pack()
+        self.inputtxt2 = tk.Text(QueryFrame,
                            height=2,
                            width=20)
-        inputtxt.pack()
-        inputtxt = tk.Text(QueryFrame,
+        self.inputtxt2.pack()
+        self.inputtxt3 = tk.Text(QueryFrame,
                            height=2,
                            width=20)
-        inputtxt.pack()
-        inputtxt = tk.Text(QueryFrame,
+        self.inputtxt3.pack()
+        self.inputtxt4 = tk.Text(QueryFrame,
                            height=2,
                            width=20)
-        inputtxt.pack()
+        self.inputtxt4.pack()
 
-        aggregate = Button(QueryFrame, text='Aggregate')
+        aggregate = Button(QueryFrame, text='Aggregate', command=self.aggregateData)
         aggregate.pack(side=TOP)
         QueryFrame.grid(row=1, column=2, padx=10, pady=5)
-
 
         plt.show()
 
@@ -193,19 +191,27 @@ class UserInterface(tk.Tk):
         self.gd = self.sd.compileGraphData()
         self.callback()
 
-    def aggregateData(self, DateS, DateE, TimeS, TimeE):
+    def aggregateData(self):
         #returnData = [tempAvrg, ACCMagAvrg, EDAAvrg, onWristAvrg, movIntenAvrg, stepCtAvrg, restAvrg]
         #add window to aggregate based on timeframe
         #window needs start date, end date, start time, and end time
         #add start button on window
+        DateS = self.inputtxt1
+        DateE = self.inputtxt2
+        TimeS = self.inputtxt3
+        TimeE = self.inputtxt4
         returnData = self.sd.aggregate(DateS, DateE, TimeS, TimeE)
         #somehow plot the return data over graphs
         #self.callback()
 
-    def queryData(self, DateS, DateE, TimeS, TimeE):
+    def queryData(self):
         #add window to query based on timeframe
         #window needs start date, end date, start time, and end time
         #add start button on window
+        DateS = self.inputtxt1
+        DateE = self.inputtxt2
+        TimeS = self.inputtxt3
+        TimeE = self.inputtxt4
         self.gd = self.sd.queryGraph(DateS, DateE, TimeS, TimeE)
         #self.callback()
 
