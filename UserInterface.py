@@ -156,7 +156,7 @@ class UserInterface(tk.Tk):
 
         label1 = Label(QueryFrame, text="Query:")
         label1.pack()
-
+        QueryFrame.grid(row=1, column=2, padx=10, pady=5)
 
         self.inputtxt1 = tk.Text(QueryFrame,
                            height=2,
@@ -177,7 +177,6 @@ class UserInterface(tk.Tk):
 
         aggregate = Button(QueryFrame, text='Aggregate', command=self.aggregateData)
         aggregate.pack(side=TOP)
-        QueryFrame.grid(row=1, column=2, padx=10, pady=5)
 
         plt.show()
 
