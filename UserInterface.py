@@ -191,7 +191,6 @@ class UserInterface(tk.Tk):
         self.callback()
 
     def aggregateData(self):
-        #returnData = [tempAvrg, ACCMagAvrg, EDAAvrg, onWristAvrg, movIntenAvrg, stepCtAvrg, restAvrg]
         #add window to aggregate based on timeframe
         #window needs start date, end date, start time, and end time
         #add start button on window
@@ -200,6 +199,13 @@ class UserInterface(tk.Tk):
         TimeS = self.inputtxt3
         TimeE = self.inputtxt4
         returnData = self.sd.aggregate(DateS, DateE, TimeS, TimeE)
+        returnData.plot(x='DateTime', y='TempAvrg', ax=self.axTemp)
+        returnData.plot(x='DateTime', y='ACCAvrg', ax=self.axACC)
+        returnData.plot(x='DateTime', y='EDAAvrg', ax=self.axOnWrist)
+        returnData.plot(x='DateTime', y='OnWristAvrg', ax=self.axStepCt)
+        returnData.plot(x='DateTime', y='MoveIntenAvrg', ax=self.axRest)
+        returnData.plot(x='DateTime', y='StepCtAvrg', ax=self.axEDA)
+        returnData.plot(x='DateTime', y='RestAvrg', ax=self.axMovInten)
         #somehow plot the return data over graphs
         #self.callback()
 
