@@ -227,7 +227,8 @@ class UserInterface(tk.Tk):
         Query = Button(QueryFrame, text="Query", command=self.queryData)
         Query.pack(side=TOP)
 
-
+        Swap = Button(QueryFrame, text=" Swap ")
+        Swap.pack(side=TOP)
 
         Output_Frame = Frame(window_frame, width=100, height=200)
 
