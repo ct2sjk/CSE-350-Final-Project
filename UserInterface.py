@@ -256,6 +256,7 @@ class UserInterface(tk.Tk):
         self.regraph()
 
     def switchTimeSeries(self):
+        self.callback()
         if self.timeShift == True:
             self.gdTemp = self.gd
             self.gd.compileGraph()
@@ -264,7 +265,8 @@ class UserInterface(tk.Tk):
             self.gdTemp = self.gd
             self.gd.compileGraphTS()
             self.timeShift = True
-
+        self.regraph()
+        
     def aggregateData(self):
         DateS = self.inputtxt1.get('1.0', 'end-1c')
         DateE = self.inputtxt2.get('1.0', 'end-1c')
@@ -292,15 +294,17 @@ class UserInterface(tk.Tk):
         DateE = self.inputtxt2.get('1.0', 'end-1c')
         TimeS = self.inputtxt3.get('1.0', 'end-1c')
         TimeE = self.inputtxt4.get('1.0', 'end-1c')
+        self.callback()
         self.gd = self.sd.queryGraph(DateS, DateE, TimeS, TimeE)
-        # self.callback()
+        self.regraph()        
 
     def switchGraphData(self):
         # switches between query graphs and full graphs
+        self.callback()
         gdq = self.gd
         self.gd = self.gdTemp
         self.gdTemp = gdq
-        # self.callback()
+        self.regraph()
 
     def temp_summarize(self):
         #returnData = [sum, highest, lowest]
