@@ -1,5 +1,8 @@
 import tkinter as tk
 from tkinter import *
+
+from click import command
+
 import SensorData as SD
 import matplotlib.pyplot as plt
 import matplotlib as mpl
@@ -185,13 +188,16 @@ class UserInterface(tk.Tk):
         label1 = Label(Compile_Frame, text="Menu:", padx=10, pady=5)
         label1.pack()
 
-        Browse = Button(Compile_Frame, text='Browse', padx=20, pady=10)
+        Browse = Button(Compile_Frame, text="Browse", padx=20, pady=10)
         Browse.pack( padx=10, pady=10)
 
-        Compile = Button(Compile_Frame, text='Compile', padx=10, pady=10)
+        Compile = Button(Compile_Frame, text="Compile", padx=10, pady=10)
         Compile.pack(side=TOP)
+        def close():
+            self.quit()
 
-        Quit = Button(Compile_Frame, text='Quit', padx=10, pady=10)
+        Quit = Button(Compile_Frame, text="Quit", padx=10, pady=10, command=close)
+
         Quit.pack(side=BOTTOM, padx=10, pady=10)
 
 
