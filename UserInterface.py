@@ -211,7 +211,7 @@ class UserInterface(tk.Tk):
         self.sd.compileSensor()
         self.sd.compileMeta()
         self.gd = self.sd.compileGraphData()
-        self.callback()
+        #self.callback()
 
     def aggregateData(self):
         #add window to aggregate based on timeframe
