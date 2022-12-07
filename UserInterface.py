@@ -1,5 +1,11 @@
 import tkinter as tk
 from tkinter import *
+from tkinter import filedialog
+import sys
+sys.setrecursionlimit(10**5)
+
+from click import command
+
 import SensorData as SD
 import matplotlib.pyplot as plt
 import matplotlib as mpl
@@ -185,19 +191,16 @@ class UserInterface(tk.Tk):
         label1 = Label(Compile_Frame, text="Menu:", padx=10, pady=5)
         label1.pack()
 
-        inputtxt = tk.Text(Compile_Frame,
-                            height=2,
-                            width=20)
+        Browse = Button(Compile_Frame, text="Browse", padx=20, pady=10)
+        Browse.pack( padx=10, pady=10)
 
-        Browse = Button(Compile_Frame, text='Browse', padx=5, pady=25)
-        Browse.pack(side=RIGHT, padx=10, pady=10)
+        Compile = Button(Compile_Frame, text="Compile", padx=10, pady=10)
+        Compile.pack(side=TOP)
+        def close():
+            self.quit()
 
-        inputtxt.pack()
+        Quit = Button(Compile_Frame, text="Quit", padx=10, pady=10, command=close)
 
-        compile = Button(Compile_Frame, text='Compile', padx=10, pady=10)
-        compile.pack(side=TOP)
-
-        Quit = Button(Compile_Frame, text='Quit',   padx=20, pady=10)
         Quit.pack(side=BOTTOM, padx=10, pady=10)
 
 
@@ -286,6 +289,19 @@ class UserInterface(tk.Tk):
         returnData = self.sd.summarize('MovInten')
         #somehow plot the return data over graphs
         #self.callback()
+
+def browseFiles():
+        # Add this to main project
+
+
+    filename= filedialog.askopenfilename(initialdir="/", title='Choose a file', filetypes=[('CSV Files', '.*csv')])
+    file = open(filename, "r")
+    # Also add this
+    if file:
+        query_data= file.read()
+        file.close()
+
+
     def callback(self):
         pass
 
