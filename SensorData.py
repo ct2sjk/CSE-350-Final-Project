@@ -433,6 +433,7 @@ class sensorData:
                               'StepCtAvrg':stepCtAvrg,
                               'RestAvrg':restAvrg
                               })
+                indexSD+=1
         else:
             while indexSD <= index:
                 df.append({'DateTime': self.parseDateTime(self.SDarr[indexSD].date, self.SDarr[indexSD].time),
@@ -445,6 +446,7 @@ class sensorData:
                               'StepCtAvrg':stepCtAvrg,
                               'RestAvrg':restAvrg
                               })
+                indexSD+=1
         returnData = pd.DataFrame(d)
         return returnData
 
