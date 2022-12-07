@@ -239,10 +239,10 @@ class UserInterface(tk.Tk):
             self.timeShift = True
 
     def aggregateData(self):
-        DateS = self.inputtxt1
-        DateE = self.inputtxt2
-        TimeS = self.inputtxt3
-        TimeE = self.inputtxt4
+        DateS = self.inputtxt1.get('1.0','end-1c')
+        DateE = self.inputtxt2.get('1.0','end-1c')
+        TimeS = self.inputtxt3.get('1.0','end-1c')
+        TimeE = self.inputtxt4.get('1.0','end-1c')
         print(DateS, DateE, TimeS, TimeE)
         returnData = self.sd.aggregate(DateS, DateE, TimeS, TimeE, self.timeShift)
 
@@ -274,10 +274,10 @@ class UserInterface(tk.Tk):
         # add window to query based on timeframe
         # window needs start date, end date, start time, and end time
         # add start button on window
-        DateS = self.inputtxt1
-        DateE = self.inputtxt2
-        TimeS = self.inputtxt3
-        TimeE = self.inputtxt4
+        DateS = self.inputtxt1.get('1.0','end-1c')
+        DateE = self.inputtxt2.get('1.0','end-1c')
+        TimeS = self.inputtxt3.get('1.0','end-1c')
+        TimeE = self.inputtxt4.get('1.0','end-1c')
         self.gd = self.sd.queryGraph(DateS, DateE, TimeS, TimeE)
         # self.callback()
 

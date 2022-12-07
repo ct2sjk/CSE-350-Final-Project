@@ -392,7 +392,7 @@ class sensorData:
         restAvrg = 0
 
         returnData = pd.DataFrame()
-        d = []
+        df = []
 
         y, m, d = [int(x) for x in DateE.split('-')]
         h, mi, s = [int(x) for x in TimeE.split(':')]
@@ -423,7 +423,7 @@ class sensorData:
             while indexSD <= index:
                 dati = self.parseDateTime(self.SDarr[indexSD].date, self.SDarr[indexSD].time)
                 dati += timedelta(minutes=self.SDarr[index].timeZ)
-                d.append({'DateTime': dati,
+                df.append({'DateTime': dati,
                               'TimeZ': self.SDarr[indexSD].timeZ,
                               'TempAvrg': tempAvrg,
                               'ACCAvrg': ACCMagAvrg,
@@ -435,7 +435,7 @@ class sensorData:
                               })
         else:
             while indexSD <= index:
-                d.append({'DateTime': self.parseDateTime(self.SDarr[indexSD].date, self.SDarr[indexSD].time),
+                df.append({'DateTime': self.parseDateTime(self.SDarr[indexSD].date, self.SDarr[indexSD].time),
                               'TimeZ': self.SDarr[indexSD].timeZ,
                               'TempAvrg': tempAvrg,
                               'ACCAvrg': ACCMagAvrg,
