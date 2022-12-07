@@ -1,5 +1,8 @@
 import tkinter as tk
 from tkinter import *
+from tkinter import filedialog
+import sys
+sys.setrecursionlimit(10**5)
 
 from click import command
 
@@ -286,6 +289,19 @@ class UserInterface(tk.Tk):
         returnData = self.sd.summarize('MovInten')
         #somehow plot the return data over graphs
         #self.callback()
+
+def browseFiles():
+        # Add this to main project
+
+
+    filename= filedialog.askopenfilename(initialdir="/", title='Choose a file', filetypes=[('CSV Files', '.*csv')])
+    file = open(filename, "r")
+    # Also add this
+    if file:
+        query_data= file.read()
+        file.close()
+
+
     def callback(self):
         pass
 
