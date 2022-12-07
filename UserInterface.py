@@ -148,7 +148,7 @@ class UserInterface(tk.Tk):
         toolbar.update()
         EDA_Frame_canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=True)
         EDA_summarize = Button(EDA_Frame, text='Summarize',
-                               command=self.EDA_summarize)
+                            command=self.EDA_summarize)
         EDA_summarize.pack(side=RIGHT)
         self.axEDA = figure6.add_subplot()
         self.gd.dfEDA.plot(x='DateTime', y='EDA', ax=self.axEDA)
@@ -178,24 +178,24 @@ class UserInterface(tk.Tk):
         QueryFrame.grid(row=1, column=2, padx=10, pady=5)
 
         self.inputtxt1 = tk.Text(QueryFrame,
-                                 height=2,
-                                 width=20)
+                            height=2,
+                            width=20)
         self.inputtxt1.pack()
         self.inputtxt2 = tk.Text(QueryFrame,
-                                 height=2,
-                                 width=20)
+                            height=2,
+                            width=20)
         self.inputtxt2.pack()
         self.inputtxt3 = tk.Text(QueryFrame,
-                                 height=2,
-                                 width=20)
+                            height=2,
+                            width=20)
         self.inputtxt3.pack()
         self.inputtxt4 = tk.Text(QueryFrame,
-                                 height=2,
-                                 width=20)
+                            height=2,
+                            width=20)
         self.inputtxt4.pack()
 
         aggregate = Button(QueryFrame, text='Aggregate',
-                           command=self.aggregateData)
+                        command=self.aggregateData)
         aggregate.pack(side=TOP)
 
         Compile_Frame = Frame(window_frame, width=100, height=200)
@@ -214,7 +214,7 @@ class UserInterface(tk.Tk):
             self.quit()
 
         Quit = Button(Compile_Frame, text="Quit",
-                      padx=10, pady=10, command=close)
+                    padx=10, pady=10, command=close)
 
         Quit.pack(side=BOTTOM, padx=10, pady=10)
 
