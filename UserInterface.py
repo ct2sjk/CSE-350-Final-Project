@@ -310,7 +310,6 @@ class UserInterface(tk.Tk):
 
 def browseFiles():
     # Add this to main project
-
     filename = filedialog.askopenfilename(
         initialdir="/", title='Choose a file', filetypes=[('CSV Files', '.*csv')])
     file = open(filename, "r")
