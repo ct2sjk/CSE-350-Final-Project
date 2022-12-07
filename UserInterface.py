@@ -248,12 +248,10 @@ class UserInterface(tk.Tk):
         # add window for compiling new data with two fields
         # fields open a browse window for file explorer to specify files
         # compile button calls method
-        print(self.summaryFile,self.metaDataFile)
         self.sd = SD.sensorData(self.summaryFile, self.metaDataFile)
         self.sd.compileSensor()
         self.sd.compileMeta()
         self.gd = self.sd.compileGraphData()
-        # self.callback()
 
     def switchTimeSeries(self):
         if self.timeShift == True:
@@ -357,9 +355,9 @@ class UserInterface(tk.Tk):
         # Add this to main project
         filename = filedialog.askopenfilename(
             initialdir="/", title='Choose a file', filetypes=[('CSV Files', '.*csv')])
-        self.metaDataFile = filename
+        self.summaryFile = filename
     def browseFileMD(self):
         # Add this to main project
         filename = filedialog.askopenfilename(
             initialdir="/", title='Choose a file', filetypes=[('CSV Files', '.*csv')])
-        self.summaryFile = filename
+        self.metaDataFile = filename
