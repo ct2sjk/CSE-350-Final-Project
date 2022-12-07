@@ -236,10 +236,10 @@ class UserInterface(tk.Tk):
         label1.pack()
         Output_Frame.grid(row=1, column=3, padx=10, pady=5)
 
-        self.inputtxt1 = tk.Text(Output_Frame,
+        self.outputtxt1 = tk.Text(Output_Frame,
                                 height=20,
                                 width=60)
-        self.inputtxt1.pack()
+        self.outputtxt1.pack()
 
 
         plt.show()
@@ -248,6 +248,7 @@ class UserInterface(tk.Tk):
         # add window for compiling new data with two fields
         # fields open a browse window for file explorer to specify files
         # compile button calls method
+        print(self.summaryFile,self.metaDataFile)
         self.sd = SD.sensorData(self.summaryFile, self.metaDataFile)
         self.sd.compileSensor()
         self.sd.compileMeta()
@@ -324,38 +325,26 @@ class UserInterface(tk.Tk):
     def acc_mag_summarize(self):
         #returnData = [sum, highest, lowest]
         returnData = self.sd.summarize('ACCMagnitude')
-        # somehow plot the return data over graphs
-        # self.callback()
 
     def on_wrist_summarize(self):
         #returnData = [sum, highest, lowest]
         returnData = self.sd.summarize('OnWrist')
-        # somehow plot the return data over graphs
-        # self.callback()
 
     def step_count_summarize(self):
         #returnData = [sum, highest, lowest]
         returnData = self.sd.summarize('StepCount')
-        # somehow plot the return data over graphs
-        # self.callback()
 
     def rest_summarize(self):
         #returnData = [sum, highest, lowest]
         returnData = self.sd.summarize('Rest')
-        # somehow plot the return data over graphs
-        # self.callback()
 
     def EDA_summarize(self):
         #returnData = [sum, highest, lowest]
         returnData = self.sd.summarize('EDA')
-        # somehow plot the return data over graphs
-        # self.callback()
 
     def Movement_summarize(self):
         #returnData = [sum, highest, lowest]
         returnData = self.sd.summarize('MovInten')
-        # somehow plot the return data over graphs
-        # self.callback()
 
     def callback(self):
         self.axTemp.cla()
@@ -370,18 +359,9 @@ class UserInterface(tk.Tk):
         # Add this to main project
         filename = filedialog.askopenfilename(
             initialdir="/", title='Choose a file', filetypes=[('CSV Files', '.*csv')])
-        file = open(filename, "r")
-        # Also add this
-        if file:
-            self.summaryFile = file.read()
-            file.close()
-
+        self.metaDataFile = filename
     def browseFileMD(self):
         # Add this to main project
         filename = filedialog.askopenfilename(
             initialdir="/", title='Choose a file', filetypes=[('CSV Files', '.*csv')])
-        file = open(filename, "r")
-        # Also add this
-        if file:
-            self.metaDataFile = file.read()
-            file.close()
+        self.summaryFile = filename
