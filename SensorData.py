@@ -447,7 +447,7 @@ class sensorData:
                               'RestAvrg':restAvrg
                               })
                 indexSD+=1
-        returnData = pd.DataFrame(d)
+        returnData = pd.DataFrame(df)
         return returnData
 
     def queryGraph(self, DateS, DateE, TimeS, TimeE):
