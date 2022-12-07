@@ -148,7 +148,7 @@ class UserInterface(tk.Tk):
         toolbar.update()
         EDA_Frame_canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=True)
         EDA_summarize = Button(EDA_Frame, text='Summarize',
-                               command=self.EDA_summarize)
+                        command=self.EDA_summarize)
         EDA_summarize.pack(side=RIGHT)
         self.axEDA = figure6.add_subplot()
         self.gd.dfEDA.plot(x='DateTime', y='EDA', ax=self.axEDA)
@@ -179,24 +179,24 @@ class UserInterface(tk.Tk):
         QueryFrame.grid(row=1, column=2, padx=10, pady=5)
 
         self.inputtxt1 = tk.Text(QueryFrame,
-                                 height=2,
-                                 width=20)
+                                height=2,
+                                width=20)
         self.inputtxt1.pack()
         self.inputtxt2 = tk.Text(QueryFrame,
-                                 height=2,
-                                 width=20)
+                                height=2,
+                                width=20)
         self.inputtxt2.pack()
         self.inputtxt3 = tk.Text(QueryFrame,
-                                 height=2,
-                                 width=20)
+                                height=2,
+                                width=20)
         self.inputtxt3.pack()
         self.inputtxt4 = tk.Text(QueryFrame,
-                                 height=2,
-                                 width=20)
+                                height=2,
+                                width=20)
         self.inputtxt4.pack()
 
         aggregate = Button(QueryFrame, text='Aggregate',
-                           command=self.aggregateData)
+                            command=self.aggregateData)
         aggregate.pack(side=TOP)
 
         Compile_Frame = Frame(window_frame, width=100, height=200)
@@ -205,28 +205,28 @@ class UserInterface(tk.Tk):
         label1 = Label(Compile_Frame, text="Menu:", padx=10, pady=5)
         label1.pack()
 
-        Browse = Button(Compile_Frame, text="Browse SensorData", padx=20, pady=10)
+        Browse = Button(Compile_Frame, text="Browse SensorData", padx=20, pady=10, command=self.browseFileSD)
         Browse.pack(padx=10, pady=5)
 
-        Browse = Button(Compile_Frame, text="Browse MetaData", padx=20, pady=10)
+        Browse = Button(Compile_Frame, text="Browse MetaData", padx=20, pady=10, command=self.browseFileMD)
         Browse.pack(padx=10, pady=5)
 
-        Compile = Button(Compile_Frame, text="Compile", padx=10, pady=10)
+        Compile = Button(Compile_Frame, text="Compile", padx=10, pady=10, command=self.addNewData)
         Compile.pack(side=TOP, padx=10, pady=5)
 
-        Timeshift = Button(Compile_Frame, text="Timeshift", padx=10, pady=10)
+        Timeshift = Button(Compile_Frame, text="Timeshift", padx=10, pady=10,command=self.switchTimeSeries)
         Timeshift.pack(side=RIGHT, padx=10, pady=5)
 
         def close():
             self.quit()
 
-
         Quit = Button(Compile_Frame, text="  Quit  ",
                     padx=10, pady=10, command=close)
         Quit.pack(side=RIGHT, padx=10, pady=6)
 
-        Query = Button(QueryFrame, text="Query")
+        Query = Button(QueryFrame, text="Query", command=self.queryData)
         Query.pack(side=TOP)
+
 
 
         Output_Frame = Frame(window_frame, width=100, height=200)
@@ -236,9 +236,10 @@ class UserInterface(tk.Tk):
         Output_Frame.grid(row=1, column=3, padx=10, pady=5)
 
         self.inputtxt1 = tk.Text(Output_Frame,
-                                 height=20,
-                                 width=60)
+                                height=20,
+                                width=60)
         self.inputtxt1.pack()
+
 
         plt.show()
 
