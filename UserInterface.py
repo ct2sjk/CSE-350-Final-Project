@@ -28,6 +28,8 @@ class UserInterface(tk.Tk):
         self.gd = gd
         self.gdTemp = gd
         self.timeShift = False
+        self.summaryFile 
+        self.metaDataFile
 
         window_frame = Frame(self.root)
         window_frame.pack(expand=True, fill=BOTH)
@@ -218,11 +220,11 @@ class UserInterface(tk.Tk):
 
         plt.show()
 
-    def addNewData(self, summaryFile, metaDataFile):
+    def addNewData(self):
         # add window for compiling new data with two fields
         # fields open a browse window for file explorer to specify files
         # compile button calls method
-        self.sd = SD.sensorData(summaryFile, metaDataFile)
+        self.sd = SD.sensorData(self.summaryFile, self.metaDataFile)
         self.sd.compileSensor()
         self.sd.compileMeta()
         self.gd = self.sd.compileGraphData()
