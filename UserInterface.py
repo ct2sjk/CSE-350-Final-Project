@@ -346,7 +346,7 @@ def browseFiles():
     file = open(filename, "r")
     # Also add this
     if file:
-        DummyData = file.read()
+        'CSV Files' == file.read()
         file.close()
 
 
