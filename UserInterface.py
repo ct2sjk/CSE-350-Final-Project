@@ -247,14 +247,15 @@ class UserInterface(tk.Tk):
         # add window for compiling new data with two fields
         # fields open a browse window for file explorer to specify files
         # compile button calls method
-        print(self.summaryFile, self.metaDataFile)
         self.sd = SD.sensorData(self.summaryFile, self.metaDataFile)
         self.sd.compileSensor()
         self.sd.compileMeta()
+        self.callback()
         self.gd = self.sd.compileGraphData()
-        # self.callback()
+        self.regraph()
 
     def switchTimeSeries(self):
+        self.callback()
         if self.timeShift == True:
             self.gdTemp = self.gd
             self.gd.compileGraph()
@@ -263,7 +264,8 @@ class UserInterface(tk.Tk):
             self.gdTemp = self.gd
             self.gd.compileGraphTS()
             self.timeShift = True
-
+        self.regraph()
+        
     def aggregateData(self):
         DateS = self.inputtxt1.get('1.0', 'end-1c')
         DateE = self.inputtxt2.get('1.0', 'end-1c')
@@ -273,27 +275,13 @@ class UserInterface(tk.Tk):
             DateS, DateE, TimeS, TimeE, self.timeShift)
 
         self.callback()
-
-        self.gd.dfTemp.plot(x='DateTime', y='Temp', ax=self.axTemp)
+        self.regraph()
         returnData.plot(x='DateTime', y='TempAvrg', ax=self.axTemp)
-
-        self.gd.dfAcc.plot(x='DateTime', y='ACC Magnitude', ax=self.axACC)
         returnData.plot(x='DateTime', y='ACCAvrg', ax=self.axACC)
-
-        self.gd.dfEDA.plot(x='DateTime', y='EDA', ax=self.axEDA)
         returnData.plot(x='DateTime', y='EDAAvrg', ax=self.axEDA)
-
-        self.gd.dfOnWrist.plot(x='DateTime', y='On Wrist', ax=self.axOnWrist)
         returnData.plot(x='DateTime', y='OnWristAvrg', ax=self.axOnWrist)
-
-        self.gd.dfMovInten.plot(
-            x='DateTime', y='Movement Intensity', ax=self.axMovInten)
         returnData.plot(x='DateTime', y='MoveIntenAvrg', ax=self.axMovInten)
-
-        self.gd.dfStepCt.plot(x='DateTime', y='Step Count', ax=self.axStepCt)
         returnData.plot(x='DateTime', y='StepCtAvrg', ax=self.axStepCt)
-
-        self.gd.dfRest.plot(x='DateTime', y='Rest', ax=self.axRest)
         returnData.plot(x='DateTime', y='RestAvrg', ax=self.axRest)
         plt.show()
 
@@ -305,15 +293,17 @@ class UserInterface(tk.Tk):
         DateE = self.inputtxt2.get('1.0', 'end-1c')
         TimeS = self.inputtxt3.get('1.0', 'end-1c')
         TimeE = self.inputtxt4.get('1.0', 'end-1c')
+        self.callback()
         self.gd = self.sd.queryGraph(DateS, DateE, TimeS, TimeE)
-        # self.callback()
+        self.regraph()        
 
     def switchGraphData(self):
         # switches between query graphs and full graphs
+        self.callback()
         gdq = self.gd
         self.gd = self.gdTemp
         self.gdTemp = gdq
-        # self.callback()
+        self.regraph()
 
     def temp_summarize(self):
         # returnData = [sum, highest, lowest]
@@ -378,6 +368,18 @@ class UserInterface(tk.Tk):
         self.axRest.cla()
         self.axEDA.cla()
         self.axMovInten.cla()
+
+    def regraph(self):
+        self.gd.dfTemp.plot(x='DateTime', y='Temp', ax=self.axTemp)
+        self.gd.dfAcc.plot(x='DateTime', y='ACC Magnitude', ax=self.axACC)
+        self.gd.dfEDA.plot(x='DateTime', y='EDA', ax=self.axEDA)
+        self.gd.dfOnWrist.plot(x='DateTime', y='On Wrist', ax=self.axOnWrist)
+        self.gd.dfMovInten.plot(
+            x='DateTime', y='Movement Intensity', ax=self.axMovInten)
+        self.gd.dfStepCt.plot(x='DateTime', y='Step Count', ax=self.axStepCt)
+        self.gd.dfRest.plot(x='DateTime', y='Rest', ax=self.axRest)
+        plt.show()
+    
 
     def browseFileSD(self):
         # Add this to main project
