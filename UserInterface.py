@@ -148,7 +148,7 @@ class UserInterface(tk.Tk):
         toolbar.update()
         EDA_Frame_canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=True)
         EDA_summarize = Button(EDA_Frame, text='Summarize',
-                            command=self.EDA_summarize)
+                               command=self.EDA_summarize)
         EDA_summarize.pack(side=RIGHT)
         self.axEDA = figure6.add_subplot()
         self.gd.dfEDA.plot(x='DateTime', y='EDA', ax=self.axEDA)
@@ -169,7 +169,8 @@ class UserInterface(tk.Tk):
             Movement_Frame, text='Summarize', command=self.Movement_summarize)
         Movement_summarize.pack(side=RIGHT)
         self.axMovInten = figure7.add_subplot()
-        self.gd.dfMovInten.plot(x='DateTime', y='Movement Intensity', ax=self.axMovInten)
+        self.gd.dfMovInten.plot(
+            x='DateTime', y='Movement Intensity', ax=self.axMovInten)
 
         QueryFrame = Frame(window_frame, width=100, height=200)
 
@@ -178,24 +179,24 @@ class UserInterface(tk.Tk):
         QueryFrame.grid(row=1, column=2, padx=10, pady=5)
 
         self.inputtxt1 = tk.Text(QueryFrame,
-                            height=2,
-                            width=20)
+                                 height=2,
+                                 width=20)
         self.inputtxt1.pack()
         self.inputtxt2 = tk.Text(QueryFrame,
-                            height=2,
-                            width=20)
+                                 height=2,
+                                 width=20)
         self.inputtxt2.pack()
         self.inputtxt3 = tk.Text(QueryFrame,
-                            height=2,
-                            width=20)
+                                 height=2,
+                                 width=20)
         self.inputtxt3.pack()
         self.inputtxt4 = tk.Text(QueryFrame,
-                            height=2,
-                            width=20)
+                                 height=2,
+                                 width=20)
         self.inputtxt4.pack()
 
         aggregate = Button(QueryFrame, text='Aggregate',
-                        command=self.aggregateData)
+                           command=self.aggregateData)
         aggregate.pack(side=TOP)
 
         Compile_Frame = Frame(window_frame, width=100, height=200)
@@ -219,12 +220,17 @@ class UserInterface(tk.Tk):
         def close():
             self.quit()
 
+
         Quit = Button(Compile_Frame, text="  Quit  ",
                     padx=10, pady=10, command=close)
         Quit.pack(side=RIGHT, padx=10, pady=6)
 
-        Query = Button(QueryFrame, text="Query", padx=10, pady=10)
-        Query.pack(side=TOP, padx=10, pady=5)
+        Query = Button(QueryFrame, text="Query")
+        Query.pack(side=TOP)
+
+
+        Quit = Button(Compile_Frame, text="Quit",
+                      padx=10, pady=10, command=close)
 
 
 
@@ -251,11 +257,12 @@ class UserInterface(tk.Tk):
             self.timeShift = True
 
     def aggregateData(self):
-        DateS = self.inputtxt1.get('1.0','end-1c')
-        DateE = self.inputtxt2.get('1.0','end-1c')
-        TimeS = self.inputtxt3.get('1.0','end-1c')
-        TimeE = self.inputtxt4.get('1.0','end-1c')
-        returnData = self.sd.aggregate(DateS, DateE, TimeS, TimeE, self.timeShift)
+        DateS = self.inputtxt1.get('1.0', 'end-1c')
+        DateE = self.inputtxt2.get('1.0', 'end-1c')
+        TimeS = self.inputtxt3.get('1.0', 'end-1c')
+        TimeE = self.inputtxt4.get('1.0', 'end-1c')
+        returnData = self.sd.aggregate(
+            DateS, DateE, TimeS, TimeE, self.timeShift)
 
         self.callback()
 
@@ -266,29 +273,30 @@ class UserInterface(tk.Tk):
         returnData.plot(x='DateTime', y='ACCAvrg', ax=self.axACC)
 
         self.gd.dfEDA.plot(x='DateTime', y='EDA', ax=self.axEDA)
-        returnData.plot(x='DateTime', y='EDAAvrg', ax=self.axOnWrist)
+        returnData.plot(x='DateTime', y='EDAAvrg', ax=self.axEDA)
 
         self.gd.dfOnWrist.plot(x='DateTime', y='On Wrist', ax=self.axOnWrist)
-        returnData.plot(x='DateTime', y='OnWristAvrg', ax=self.axStepCt)
+        returnData.plot(x='DateTime', y='OnWristAvrg', ax=self.axOnWrist)
 
-        self.gd.dfMovInten.plot(x='DateTime', y='Movement Intensity', ax=self.axMovInten)
-        returnData.plot(x='DateTime', y='MoveIntenAvrg', ax=self.axRest)
+        self.gd.dfMovInten.plot(
+            x='DateTime', y='Movement Intensity', ax=self.axMovInten)
+        returnData.plot(x='DateTime', y='MoveIntenAvrg', ax=self.axMovInten)
 
         self.gd.dfStepCt.plot(x='DateTime', y='Step Count', ax=self.axStepCt)
-        returnData.plot(x='DateTime', y='StepCtAvrg', ax=self.axEDA)
+        returnData.plot(x='DateTime', y='StepCtAvrg', ax=self.axStepCt)
 
         self.gd.dfRest.plot(x='DateTime', y='Rest', ax=self.axRest)
-        returnData.plot(x='DateTime', y='RestAvrg', ax=self.axMovInten)
+        returnData.plot(x='DateTime', y='RestAvrg', ax=self.axRest)
         plt.show()
 
     def queryData(self):
         # add window to query based on timeframe
         # window needs start date, end date, start time, and end time
         # add start button on window
-        DateS = self.inputtxt1.get('1.0','end-1c')
-        DateE = self.inputtxt2.get('1.0','end-1c')
-        TimeS = self.inputtxt3.get('1.0','end-1c')
-        TimeE = self.inputtxt4.get('1.0','end-1c')
+        DateS = self.inputtxt1.get('1.0', 'end-1c')
+        DateE = self.inputtxt2.get('1.0', 'end-1c')
+        TimeS = self.inputtxt3.get('1.0', 'end-1c')
+        TimeE = self.inputtxt4.get('1.0', 'end-1c')
         self.gd = self.sd.queryGraph(DateS, DateE, TimeS, TimeE)
         # self.callback()
 
@@ -349,17 +357,23 @@ class UserInterface(tk.Tk):
         self.axRest.cla()
         self.axEDA.cla()
         self.axMovInten.cla()
+    
+    def browseFileSD(self):
+        # Add this to main project
+        filename = filedialog.askopenfilename(
+            initialdir="/", title='Choose a file', filetypes=[('CSV Files', '.*csv')])
+        file = open(filename, "r")
+        # Also add this
+        if file:
+            self.summaryFile = file.read()
+            file.close()
 
-def browseFiles():
-    # Add this to main project
-    filename = filedialog.askopenfilename(
-        initialdir="/", title='Choose a file', filetypes=[('CSV Files', '.*csv')])
-    file = open(filename, "r")
-    # Also add this
-    if file:
-        'CSV Files' == file.read()
-        file.close()
-
-
-
-
+    def browseFileMD(self):
+        # Add this to main project
+        filename = filedialog.askopenfilename(
+            initialdir="/", title='Choose a file', filetypes=[('CSV Files', '.*csv')])
+        file = open(filename, "r")
+        # Also add this
+        if file:
+            self.metaDataFile = file.read()
+            file.close()
