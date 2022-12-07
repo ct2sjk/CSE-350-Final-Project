@@ -205,34 +205,27 @@ class UserInterface(tk.Tk):
         label1 = Label(Compile_Frame, text="Menu:", padx=10, pady=5)
         label1.pack()
 
-        Browse = Button(Compile_Frame, text="Browse SensorData", padx=20, pady=10)
+        Browse = Button(Compile_Frame, text="Browse SensorData", padx=20, pady=10, command=self.browseFileSD)
         Browse.pack(padx=10, pady=5)
 
-        Browse = Button(Compile_Frame, text="Browse MetaData", padx=20, pady=10)
+        Browse = Button(Compile_Frame, text="Browse MetaData", padx=20, pady=10, command=self.browseFileMD)
         Browse.pack(padx=10, pady=5)
 
-        Compile = Button(Compile_Frame, text="Compile", padx=10, pady=10)
+        Compile = Button(Compile_Frame, text="Compile", padx=10, pady=10, command=self.addNewData)
         Compile.pack(side=TOP, padx=10, pady=5)
 
-        Timeshift = Button(Compile_Frame, text="Timeshift", padx=10, pady=10)
+        Timeshift = Button(Compile_Frame, text="Timeshift", padx=10, pady=10,command=self.switchTimeSeries)
         Timeshift.pack(side=RIGHT, padx=10, pady=5)
 
         def close():
             self.quit()
 
-
         Quit = Button(Compile_Frame, text="  Quit  ",
                     padx=10, pady=10, command=close)
         Quit.pack(side=RIGHT, padx=10, pady=6)
 
-        Query = Button(QueryFrame, text="Query")
+        Query = Button(QueryFrame, text="Query", command=self.queryData)
         Query.pack(side=TOP)
-
-
-        Quit = Button(Compile_Frame, text="Quit",
-                      padx=10, pady=10, command=close)
-
-
 
         plt.show()
 
