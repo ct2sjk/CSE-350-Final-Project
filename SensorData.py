@@ -307,6 +307,9 @@ class sensorData:
         stepCtAvrg = 0
         restAvrg = 0
 
+        returnData = pd.DataFrame()
+        d = []
+
         y, m, d = [int(x) for x in DateE.split('-')]
         h, mi, s = [int(x) for x in TimeE.split(':')]
         dtE = datetime(y, m, d, h, mi, s)
@@ -331,8 +334,19 @@ class sensorData:
         stepCtAvrg = stepCtAvrg / size
         restAvrg = restAvrg / size
 
-        returnData = [tempAvrg, ACCMagAvrg, EDAAvrg, onWristAvrg, movIntenAvrg, stepCtAvrg, restAvrg]
-
+        indexSD = indexS
+        while indexSD <= index:
+            d.append({'DateTime': self.parseDateTime(self.SDarr[indexSD].date, self.SDarr[indexSD].time),
+                              'TimeZ': self.SDarr[indexSD].timeZ,
+                              'TempAvrg': tempAvrg,
+                              'ACCAvrg': ACCMagAvrg,
+                              'EDAAvrg': EDAAvrg,
+                              'OnWristAvrg':onWristAvrg,
+                              'MoveIntenAvrg':movIntenAvrg,
+                              'StepCtAvrg':stepCtAvrg,
+                              'RestAvrg':restAvrg
+                              })
+        returnData = pd.DataFrame(d)
         return returnData
 
     def queryGraph(self, DateS, DateE, TimeS, TimeE):
