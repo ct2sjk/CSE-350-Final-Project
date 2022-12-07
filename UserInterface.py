@@ -256,19 +256,19 @@ class UserInterface(tk.Tk):
         returnData.plot(x='DateTime', y='ACCAvrg', ax=self.axACC)
 
         self.gd.dfEDA.plot(x='DateTime', y='EDA', ax=self.axEDA)
-        returnData.plot(x='DateTime', y='EDAAvrg', ax=self.axOnWrist)
+        returnData.plot(x='DateTime', y='EDAAvrg', ax=self.axEDA)
 
         self.gd.dfOnWrist.plot(x='DateTime', y='On Wrist', ax=self.axOnWrist)
-        returnData.plot(x='DateTime', y='OnWristAvrg', ax=self.axStepCt)
+        returnData.plot(x='DateTime', y='OnWristAvrg', ax=self.axOnWrist)
 
         self.gd.dfMovInten.plot(x='DateTime', y='Movement Intensity', ax=self.axMovInten)
-        returnData.plot(x='DateTime', y='MoveIntenAvrg', ax=self.axRest)
+        returnData.plot(x='DateTime', y='MoveIntenAvrg', ax=self.axMovInten)
 
         self.gd.dfStepCt.plot(x='DateTime', y='Step Count', ax=self.axStepCt)
-        returnData.plot(x='DateTime', y='StepCtAvrg', ax=self.axEDA)
+        returnData.plot(x='DateTime', y='StepCtAvrg', ax=self.axStepCt)
 
         self.gd.dfRest.plot(x='DateTime', y='Rest', ax=self.axRest)
-        returnData.plot(x='DateTime', y='RestAvrg', ax=self.axMovInten)
+        returnData.plot(x='DateTime', y='RestAvrg', ax=self.axRest)
         plt.show()
 
     def queryData(self):
