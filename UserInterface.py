@@ -385,10 +385,10 @@ class UserInterface(tk.Tk):
         # Add this to main project
         filename = filedialog.askopenfilename(
             initialdir="/", title='Choose a file', filetypes=[('CSV Files', '.*csv')])
-        self.metaDataFile = filename
+        self.summaryFile = filename
 
     def browseFileMD(self):
         # Add this to main project
         filename = filedialog.askopenfilename(
             initialdir="/", title='Choose a file', filetypes=[('CSV Files', '.*csv')])
-        self.summaryFile = filename
+        self.metaDataFile = filename
