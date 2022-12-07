@@ -251,7 +251,9 @@ class UserInterface(tk.Tk):
         self.sd = SD.sensorData(self.summaryFile, self.metaDataFile)
         self.sd.compileSensor()
         self.sd.compileMeta()
+        self.callback()
         self.gd = self.sd.compileGraphData()
+        self.regraph()
 
     def switchTimeSeries(self):
         if self.timeShift == True:
@@ -272,27 +274,13 @@ class UserInterface(tk.Tk):
             DateS, DateE, TimeS, TimeE, self.timeShift)
 
         self.callback()
-
-        self.gd.dfTemp.plot(x='DateTime', y='Temp', ax=self.axTemp)
+        self.regraph()
         returnData.plot(x='DateTime', y='TempAvrg', ax=self.axTemp)
-
-        self.gd.dfAcc.plot(x='DateTime', y='ACC Magnitude', ax=self.axACC)
         returnData.plot(x='DateTime', y='ACCAvrg', ax=self.axACC)
-
-        self.gd.dfEDA.plot(x='DateTime', y='EDA', ax=self.axEDA)
         returnData.plot(x='DateTime', y='EDAAvrg', ax=self.axEDA)
-
-        self.gd.dfOnWrist.plot(x='DateTime', y='On Wrist', ax=self.axOnWrist)
         returnData.plot(x='DateTime', y='OnWristAvrg', ax=self.axOnWrist)
-
-        self.gd.dfMovInten.plot(
-            x='DateTime', y='Movement Intensity', ax=self.axMovInten)
         returnData.plot(x='DateTime', y='MoveIntenAvrg', ax=self.axMovInten)
-
-        self.gd.dfStepCt.plot(x='DateTime', y='Step Count', ax=self.axStepCt)
         returnData.plot(x='DateTime', y='StepCtAvrg', ax=self.axStepCt)
-
-        self.gd.dfRest.plot(x='DateTime', y='Rest', ax=self.axRest)
         returnData.plot(x='DateTime', y='RestAvrg', ax=self.axRest)
         plt.show()
 
@@ -350,6 +338,17 @@ class UserInterface(tk.Tk):
         self.axRest.cla()
         self.axEDA.cla()
         self.axMovInten.cla()
+
+    def regraph(self):
+        self.gd.dfTemp.plot(x='DateTime', y='Temp', ax=self.axTemp)
+        self.gd.dfAcc.plot(x='DateTime', y='ACC Magnitude', ax=self.axACC)
+        self.gd.dfEDA.plot(x='DateTime', y='EDA', ax=self.axEDA)
+        self.gd.dfOnWrist.plot(x='DateTime', y='On Wrist', ax=self.axOnWrist)
+        self.gd.dfMovInten.plot(
+            x='DateTime', y='Movement Intensity', ax=self.axMovInten)
+        self.gd.dfStepCt.plot(x='DateTime', y='Step Count', ax=self.axStepCt)
+        self.gd.dfRest.plot(x='DateTime', y='Rest', ax=self.axRest)
+        plt.show()
     
     def browseFileSD(self):
         # Add this to main project
