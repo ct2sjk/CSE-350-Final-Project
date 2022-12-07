@@ -188,8 +188,8 @@ class UserInterface(tk.Tk):
         Browse = Button(Compile_Frame, text='Browse', padx=20, pady=10)
         Browse.pack( padx=10, pady=10)
 
-        compile = Button(Compile_Frame, text='Compile', padx=10, pady=10)
-        compile.pack(side=TOP)
+        Compile = Button(Compile_Frame, text='Compile', padx=10, pady=10)
+        Compile.pack(side=TOP)
 
         Quit = Button(Compile_Frame, text='Quit', padx=10, pady=10)
         Quit.pack(side=BOTTOM, padx=10, pady=10)
