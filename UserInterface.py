@@ -346,7 +346,7 @@ def browseFiles():
     file = open(filename, "r")
     # Also add this
     if file:
-        query_data = file.read()
+        DummyData = file.read()
         file.close()
 
 
