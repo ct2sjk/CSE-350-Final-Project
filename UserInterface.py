@@ -366,7 +366,7 @@ class UserInterface(tk.Tk):
 
     def stringFormat(self, title, numList):
         strFormat = "Summary " + "(" + title + "):" + "\n" + "Sum: " + str(numList[0]) + "\n" + "Min: " + str(
-            numList[2]) + "\n" + "Max: " + str(numList[1])
+            numList[2]) + "\n" + "Max: " + str(numList[1]) + "\n"
 
         return strFormat
 
