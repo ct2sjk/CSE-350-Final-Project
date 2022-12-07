@@ -243,7 +243,6 @@ class UserInterface(tk.Tk):
         DateE = self.inputtxt2.get('1.0','end-1c')
         TimeS = self.inputtxt3.get('1.0','end-1c')
         TimeE = self.inputtxt4.get('1.0','end-1c')
-        print(DateS, DateE, TimeS, TimeE)
         returnData = self.sd.aggregate(DateS, DateE, TimeS, TimeE, self.timeShift)
 
         self.callback()
