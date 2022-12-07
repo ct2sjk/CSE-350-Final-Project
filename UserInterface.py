@@ -27,6 +27,7 @@ class UserInterface(tk.Tk):
         self.sd = sd
         self.gd = gd
         self.gdTemp = gd
+        self.timeShift = False
 
         window_frame = Frame(self.root)
         window_frame.pack(expand=True, fill=BOTH)
@@ -166,8 +167,7 @@ class UserInterface(tk.Tk):
             Movement_Frame, text='Summarize', command=self.Movement_summarize)
         Movement_summarize.pack(side=RIGHT)
         self.axMovInten = figure7.add_subplot()
-        self.gd.dfMovInten.plot(
-            x='DateTime', y='Movement Intensity', ax=self.axMovInten)
+        self.gd.dfMovInten.plot(x='DateTime', y='Movement Intensity', ax=self.axMovInten)
 
         QueryFrame = Frame(window_frame, width=100, height=200)
 
@@ -228,24 +228,47 @@ class UserInterface(tk.Tk):
         self.gd = self.sd.compileGraphData()
         # self.callback()
 
+    def switchTimeSeries(self):
+        if self.timeShift == True:
+            self.gdTemp = self.gd
+            self.gd.compileGraph()
+            self.timeShift = False
+        else:
+            self.gdTemp = self.gd
+            self.gd.compileGraphTS()
+            self.timeShift = True
+
     def aggregateData(self):
-        # add window to aggregate based on timeframe
-        # window needs start date, end date, start time, and end time
-        # add start button on window
         DateS = self.inputtxt1
         DateE = self.inputtxt2
         TimeS = self.inputtxt3
         TimeE = self.inputtxt4
-        returnData = self.sd.aggregate(DateS, DateE, TimeS, TimeE)
+        print(DateS, DateE, TimeS, TimeE)
+        returnData = self.sd.aggregate(DateS, DateE, TimeS, TimeE, self.timeShift)
+
+        self.callback()
+
+        self.gd.dfTemp.plot(x='DateTime', y='Temp', ax=self.axTemp)
         returnData.plot(x='DateTime', y='TempAvrg', ax=self.axTemp)
+
+        self.gd.dfAcc.plot(x='DateTime', y='ACC Magnitude', ax=self.axACC)
         returnData.plot(x='DateTime', y='ACCAvrg', ax=self.axACC)
+
+        self.gd.dfEDA.plot(x='DateTime', y='EDA', ax=self.axEDA)
         returnData.plot(x='DateTime', y='EDAAvrg', ax=self.axOnWrist)
+
+        self.gd.dfOnWrist.plot(x='DateTime', y='On Wrist', ax=self.axOnWrist)
         returnData.plot(x='DateTime', y='OnWristAvrg', ax=self.axStepCt)
+
+        self.gd.dfMovInten.plot(x='DateTime', y='Movement Intensity', ax=self.axMovInten)
         returnData.plot(x='DateTime', y='MoveIntenAvrg', ax=self.axRest)
+
+        self.gd.dfStepCt.plot(x='DateTime', y='Step Count', ax=self.axStepCt)
         returnData.plot(x='DateTime', y='StepCtAvrg', ax=self.axEDA)
+
+        self.gd.dfRest.plot(x='DateTime', y='Rest', ax=self.axRest)
         returnData.plot(x='DateTime', y='RestAvrg', ax=self.axMovInten)
-        # somehow plot the return data over graphs
-        # self.callback()
+        plt.show()
 
     def queryData(self):
         # add window to query based on timeframe
@@ -307,6 +330,14 @@ class UserInterface(tk.Tk):
         # somehow plot the return data over graphs
         # self.callback()
 
+    def callback(self):
+        self.axTemp.cla()
+        self.axACC.cla()
+        self.axOnWrist.cla()
+        self.axStepCt.cla()
+        self.axRest.cla()
+        self.axEDA.cla()
+        self.axMovInten.cla()
 
 def browseFiles():
     # Add this to main project
@@ -319,5 +350,5 @@ def browseFiles():
         file.close()
 
 
-def callback(self):
-    pass
+
+

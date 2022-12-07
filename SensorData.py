@@ -109,6 +109,90 @@ class graphData:
         dati = datetime(y, m, d, h, mi, s)
         return dati
 
+    def switcherShift(self, DataSet):
+        iter = 0
+        d = []
+        match DataSet:
+            case 'Temp':
+                for obj in self.SDarr:
+                    dati = self.parseDateTime(obj.date, obj.time)
+                    dati += timedelta(minutes=obj.timeZ)
+                    d.append({'DateTime': dati,
+                              'TimeZ': obj.timeZ,
+                              'Temp': obj.temp
+                              })
+                    iter += 1
+                self.dfTemp = pd.DataFrame(d)
+            case 'ACCMagnitude':
+                for obj in self.SDarr:
+                    dati = self.parseDateTime(obj.date, obj.time)
+                    dati += timedelta(minutes=obj.timeZ)
+                    d.append({'DateTime': self.parseDateTime(obj.date, obj.time),
+                              'TimeZ': obj.timeZ,
+                              'ACC Magnitude': obj.ACCMag
+                              })
+                    iter += 1
+                self.dfAcc = pd.DataFrame(d)
+            case 'EDA':
+                for obj in self.SDarr:
+                    dati = self.parseDateTime(obj.date, obj.time)
+                    dati += timedelta(minutes=obj.timeZ)
+                    d.append({'DateTime': self.parseDateTime(obj.date, obj.time),
+                              'TimeZ': obj.timeZ,
+                              'EDA': obj.EDA
+                              })
+                    iter += 1
+                self.dfEDA = pd.DataFrame(d)
+            case 'OnWrist':
+                for obj in self.SDarr:
+                    dati = self.parseDateTime(obj.date, obj.time)
+                    dati += timedelta(minutes=obj.timeZ)
+                    d.append({'DateTime': self.parseDateTime(obj.date, obj.time),
+                              'TimeZ': obj.timeZ,
+                              'On Wrist': obj.onWrist
+                              })
+                    iter += 1
+                self.dfOnWrist = pd.DataFrame(d)
+            case 'MovInten':
+                for obj in self.SDarr:
+                    dati = self.parseDateTime(obj.date, obj.time)
+                    dati += timedelta(minutes=obj.timeZ)
+                    d.append({'DateTime': self.parseDateTime(obj.date, obj.time),
+                              'TimeZ': obj.timeZ,
+                              'Movement Intensity': obj.movInten
+                              })
+                    iter += 1
+                self.dfMovInten = pd.DataFrame(d)
+            case 'StepCount':
+                for obj in self.SDarr:
+                    dati = self.parseDateTime(obj.date, obj.time)
+                    dati += timedelta(minutes=obj.timeZ)
+                    d.append({'DateTime': self.parseDateTime(obj.date, obj.time),
+                              'TimeZ': obj.timeZ,
+                              'Step Count': obj.stepCt
+                              })
+                    iter += 1
+                self.dfStepCt = pd.DataFrame(d)
+            case 'Rest':
+                for obj in self.SDarr:
+                    dati = self.parseDateTime(obj.date, obj.time)
+                    dati += timedelta(minutes=obj.timeZ)
+                    d.append({'DateTime': self.parseDateTime(obj.date, obj.time),
+                              'TimeZ': obj.timeZ,
+                              'Rest': obj.rest
+                              })
+                    iter += 1
+                self.dfRest = pd.DataFrame(d)
+
+    def compileGraphTS(self):
+        self.switcher('Temp')
+        self.switcher('ACCMagnitude')
+        self.switcher('EDA')
+        self.switcher('OnWrist')
+        self.switcher('MovInten')
+        self.switcher('StepCount')
+        self.switcher('Rest')
+
     def compileGraph(self):
         self.switcher('Temp')
         self.switcher('ACCMagnitude')
@@ -298,7 +382,7 @@ class sensorData:
             average = round(average)
         return average, rangeU, rangeL
 
-    def aggregate(self, DateS, DateE, TimeS, TimeE):
+    def aggregate(self, DateS, DateE, TimeS, TimeE, timeShift):
         tempAvrg = 0
         ACCMagAvrg = 0
         EDAAvrg = 0
@@ -335,8 +419,23 @@ class sensorData:
         restAvrg = restAvrg / size
 
         indexSD = indexS
-        while indexSD <= index:
-            d.append({'DateTime': self.parseDateTime(self.SDarr[indexSD].date, self.SDarr[indexSD].time),
+        if timeShift == True:
+            while indexSD <= index:
+                dati = self.parseDateTime(self.SDarr[indexSD].date, self.SDarr[indexSD].time)
+                dati += timedelta(minutes=self.SDarr[index].timeZ)
+                d.append({'DateTime': dati,
+                              'TimeZ': self.SDarr[indexSD].timeZ,
+                              'TempAvrg': tempAvrg,
+                              'ACCAvrg': ACCMagAvrg,
+                              'EDAAvrg': EDAAvrg,
+                              'OnWristAvrg':onWristAvrg,
+                              'MoveIntenAvrg':movIntenAvrg,
+                              'StepCtAvrg':stepCtAvrg,
+                              'RestAvrg':restAvrg
+                              })
+        else:
+            while indexSD <= index:
+                d.append({'DateTime': self.parseDateTime(self.SDarr[indexSD].date, self.SDarr[indexSD].time),
                               'TimeZ': self.SDarr[indexSD].timeZ,
                               'TempAvrg': tempAvrg,
                               'ACCAvrg': ACCMagAvrg,
