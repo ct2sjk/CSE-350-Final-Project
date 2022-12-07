@@ -12,8 +12,8 @@ import tkinter as tk
 from tkinter import *
 from tkinter import filedialog
 import sys
-sys.setrecursionlimit(10**5)
 
+sys.setrecursionlimit(10 ** 5)
 
 matplotlib.use('TKAgg')
 
@@ -148,7 +148,7 @@ class UserInterface(tk.Tk):
         toolbar.update()
         EDA_Frame_canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=True)
         EDA_summarize = Button(EDA_Frame, text='Summarize',
-                        command=self.EDA_summarize)
+                               command=self.EDA_summarize)
         EDA_summarize.pack(side=RIGHT)
         self.axEDA = figure6.add_subplot()
         self.gd.dfEDA.plot(x='DateTime', y='EDA', ax=self.axEDA)
@@ -179,24 +179,24 @@ class UserInterface(tk.Tk):
         QueryFrame.grid(row=1, column=2, padx=10, pady=5)
 
         self.inputtxt1 = tk.Text(QueryFrame,
-                                height=2,
-                                width=20)
+                                 height=2,
+                                 width=20)
         self.inputtxt1.pack()
         self.inputtxt2 = tk.Text(QueryFrame,
-                                height=2,
-                                width=20)
+                                 height=2,
+                                 width=20)
         self.inputtxt2.pack()
         self.inputtxt3 = tk.Text(QueryFrame,
-                                height=2,
-                                width=20)
+                                 height=2,
+                                 width=20)
         self.inputtxt3.pack()
         self.inputtxt4 = tk.Text(QueryFrame,
-                                height=2,
-                                width=20)
+                                 height=2,
+                                 width=20)
         self.inputtxt4.pack()
 
         aggregate = Button(QueryFrame, text='Aggregate',
-                            command=self.aggregateData)
+                           command=self.aggregateData)
         aggregate.pack(side=TOP)
 
         Compile_Frame = Frame(window_frame, width=100, height=200)
@@ -214,14 +214,14 @@ class UserInterface(tk.Tk):
         Compile = Button(Compile_Frame, text="Compile", padx=10, pady=10, command=self.addNewData)
         Compile.pack(side=TOP, padx=10, pady=5)
 
-        Timeshift = Button(Compile_Frame, text="Timeshift", padx=10, pady=10,command=self.switchTimeSeries)
+        Timeshift = Button(Compile_Frame, text="Timeshift", padx=10, pady=10, command=self.switchTimeSeries)
         Timeshift.pack(side=RIGHT, padx=10, pady=5)
 
         def close():
             self.quit()
 
         Quit = Button(Compile_Frame, text="  Quit  ",
-                    padx=10, pady=10, command=close)
+                      padx=10, pady=10, command=close)
         Quit.pack(side=RIGHT, padx=10, pady=6)
 
         Query = Button(QueryFrame, text="Query", command=self.queryData)
@@ -237,10 +237,9 @@ class UserInterface(tk.Tk):
         Output_Frame.grid(row=1, column=3, padx=10, pady=5)
 
         self.outputtxt1 = tk.Text(Output_Frame,
-                                height=20,
-                                width=60)
+                                  height=20,
+                                  width=60)
         self.outputtxt1.pack()
-
 
         plt.show()
 
@@ -248,15 +247,14 @@ class UserInterface(tk.Tk):
         # add window for compiling new data with two fields
         # fields open a browse window for file explorer to specify files
         # compile button calls method
+        print(self.summaryFile, self.metaDataFile)
         self.sd = SD.sensorData(self.summaryFile, self.metaDataFile)
         self.sd.compileSensor()
         self.sd.compileMeta()
-        self.callback()
         self.gd = self.sd.compileGraphData()
-        self.regraph()
+        # self.callback()
 
     def switchTimeSeries(self):
-        self.callback()
         if self.timeShift == True:
             self.gdTemp = self.gd
             self.gd.compileGraph()
@@ -265,8 +263,7 @@ class UserInterface(tk.Tk):
             self.gdTemp = self.gd
             self.gd.compileGraphTS()
             self.timeShift = True
-        self.regraph()
-        
+
     def aggregateData(self):
         DateS = self.inputtxt1.get('1.0', 'end-1c')
         DateE = self.inputtxt2.get('1.0', 'end-1c')
@@ -276,13 +273,27 @@ class UserInterface(tk.Tk):
             DateS, DateE, TimeS, TimeE, self.timeShift)
 
         self.callback()
-        self.regraph()
+
+        self.gd.dfTemp.plot(x='DateTime', y='Temp', ax=self.axTemp)
         returnData.plot(x='DateTime', y='TempAvrg', ax=self.axTemp)
+
+        self.gd.dfAcc.plot(x='DateTime', y='ACC Magnitude', ax=self.axACC)
         returnData.plot(x='DateTime', y='ACCAvrg', ax=self.axACC)
+
+        self.gd.dfEDA.plot(x='DateTime', y='EDA', ax=self.axEDA)
         returnData.plot(x='DateTime', y='EDAAvrg', ax=self.axEDA)
+
+        self.gd.dfOnWrist.plot(x='DateTime', y='On Wrist', ax=self.axOnWrist)
         returnData.plot(x='DateTime', y='OnWristAvrg', ax=self.axOnWrist)
+
+        self.gd.dfMovInten.plot(
+            x='DateTime', y='Movement Intensity', ax=self.axMovInten)
         returnData.plot(x='DateTime', y='MoveIntenAvrg', ax=self.axMovInten)
+
+        self.gd.dfStepCt.plot(x='DateTime', y='Step Count', ax=self.axStepCt)
         returnData.plot(x='DateTime', y='StepCtAvrg', ax=self.axStepCt)
+
+        self.gd.dfRest.plot(x='DateTime', y='Rest', ax=self.axRest)
         returnData.plot(x='DateTime', y='RestAvrg', ax=self.axRest)
         plt.show()
 
@@ -294,45 +305,70 @@ class UserInterface(tk.Tk):
         DateE = self.inputtxt2.get('1.0', 'end-1c')
         TimeS = self.inputtxt3.get('1.0', 'end-1c')
         TimeE = self.inputtxt4.get('1.0', 'end-1c')
-        self.callback()
         self.gd = self.sd.queryGraph(DateS, DateE, TimeS, TimeE)
-        self.regraph()        
+        # self.callback()
 
     def switchGraphData(self):
         # switches between query graphs and full graphs
-        self.callback()
         gdq = self.gd
         self.gd = self.gdTemp
         self.gdTemp = gdq
-        self.regraph()
+        # self.callback()
 
     def temp_summarize(self):
-        #returnData = [sum, highest, lowest]
+        # returnData = [sum, highest, lowest]
         returnData = self.sd.summarize('Temp')
+        # format return data
+        Temp_String = self.stringFormat("Temperature", returnData)
+        self.outputtxt1.insert(tk.END, Temp_String)
 
     def acc_mag_summarize(self):
-        #returnData = [sum, highest, lowest]
+        # returnData = [sum, highest, lowest]
         returnData = self.sd.summarize('ACCMagnitude')
+        # format return data
+        ACC_Mag_String = self.stringFormat("ACC_Magnitude", returnData)
+        self.outputtxt1.insert(tk.END, ACC_Mag_String)
 
     def on_wrist_summarize(self):
-        #returnData = [sum, highest, lowest]
+        # returnData = [sum, highest, lowest]
         returnData = self.sd.summarize('OnWrist')
+        # format return data
+        On_Wrist_String = self.stringFormat("On_Wrist", returnData)
+        self.outputtxt1.insert(tk.END, On_Wrist_String)
 
     def step_count_summarize(self):
-        #returnData = [sum, highest, lowest]
+        # returnData = [sum, highest, lowest]
         returnData = self.sd.summarize('StepCount')
+        # format return data
+        Step_Count_String = self.stringFormat("Step_Count", returnData)
+        self.outputtxt1.insert(tk.END, Step_Count_String)
 
     def rest_summarize(self):
-        #returnData = [sum, highest, lowest]
+        # returnData = [sum, highest, lowest]
         returnData = self.sd.summarize('Rest')
+        # format return data
+        Rest_String = self.stringFormat("Rest", returnData)
+        self.outputtxt1.insert(tk.END, Rest_String)
 
     def EDA_summarize(self):
-        #returnData = [sum, highest, lowest]
+        # returnData = [sum, highest, lowest]
         returnData = self.sd.summarize('EDA')
+        # format return data
+        EDA_String = self.stringFormat("EDA", returnData)
+        self.outputtxt1.insert(tk.END, EDA_String)
 
     def Movement_summarize(self):
-        #returnData = [sum, highest, lowest]
+        # returnData = [sum, highest, lowest]
         returnData = self.sd.summarize('MovInten')
+        # format return data
+        Movement_String = self.stringFormat("Movement", returnData)
+        self.outputtxt1.insert(tk.END, Movement_String)
+
+    def stringFormat(self, title, numList):
+        strFormat = "Summary " + "(" + title + "):" + "\n" + "Sum: " + str(numList[0]) + "\n" + "Min: " + str(
+            numList[2]) + "\n" + "Max: " + str(numList[1])
+
+        return strFormat
 
     def callback(self):
         self.axTemp.cla()
@@ -343,24 +379,14 @@ class UserInterface(tk.Tk):
         self.axEDA.cla()
         self.axMovInten.cla()
 
-    def regraph(self):
-        self.gd.dfTemp.plot(x='DateTime', y='Temp', ax=self.axTemp)
-        self.gd.dfAcc.plot(x='DateTime', y='ACC Magnitude', ax=self.axACC)
-        self.gd.dfEDA.plot(x='DateTime', y='EDA', ax=self.axEDA)
-        self.gd.dfOnWrist.plot(x='DateTime', y='On Wrist', ax=self.axOnWrist)
-        self.gd.dfMovInten.plot(
-            x='DateTime', y='Movement Intensity', ax=self.axMovInten)
-        self.gd.dfStepCt.plot(x='DateTime', y='Step Count', ax=self.axStepCt)
-        self.gd.dfRest.plot(x='DateTime', y='Rest', ax=self.axRest)
-        plt.show()
-    
     def browseFileSD(self):
         # Add this to main project
         filename = filedialog.askopenfilename(
             initialdir="/", title='Choose a file', filetypes=[('CSV Files', '.*csv')])
-        self.summaryFile = filename
+        self.metaDataFile = filename
+
     def browseFileMD(self):
         # Add this to main project
         filename = filedialog.askopenfilename(
             initialdir="/", title='Choose a file', filetypes=[('CSV Files', '.*csv')])
-        self.metaDataFile = filename
+        self.summaryFile = filename
