@@ -229,10 +229,16 @@ class UserInterface(tk.Tk):
         Query.pack(side=TOP)
 
 
-        Quit = Button(Compile_Frame, text="Quit",
-                      padx=10, pady=10, command=close)
+        Output_Frame = Frame(window_frame, width=100, height=200)
 
+        label1 = Label(Output_Frame, text="General Output:")
+        label1.pack()
+        Output_Frame.grid(row=1, column=3, padx=10, pady=5)
 
+        self.inputtxt1 = tk.Text(Output_Frame,
+                                 height=20,
+                                 width=60)
+        self.inputtxt1.pack()
 
         plt.show()
 
