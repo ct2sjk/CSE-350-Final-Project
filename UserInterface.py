@@ -185,19 +185,13 @@ class UserInterface(tk.Tk):
         label1 = Label(Compile_Frame, text="Menu:", padx=10, pady=5)
         label1.pack()
 
-        inputtxt = tk.Text(Compile_Frame,
-                            height=2,
-                            width=20)
-
-        Browse = Button(Compile_Frame, text='Browse', padx=5, pady=25)
-        Browse.pack(side=RIGHT, padx=10, pady=10)
-
-        inputtxt.pack()
+        Browse = Button(Compile_Frame, text='Browse', padx=20, pady=10)
+        Browse.pack( padx=10, pady=10)
 
         compile = Button(Compile_Frame, text='Compile', padx=10, pady=10)
         compile.pack(side=TOP)
 
-        Quit = Button(Compile_Frame, text='Quit',   padx=20, pady=10)
+        Quit = Button(Compile_Frame, text='Quit', padx=10, pady=10)
         Quit.pack(side=BOTTOM, padx=10, pady=10)
 
 
