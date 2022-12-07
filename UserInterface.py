@@ -28,8 +28,8 @@ class UserInterface(tk.Tk):
         self.gd = gd
         self.gdTemp = gd
         self.timeShift = False
-        self.summaryFile 
-        self.metaDataFile
+        self.summaryFile = ''
+        self.metaDataFile = ''
 
         window_frame = Frame(self.root)
         window_frame.pack(expand=True, fill=BOTH)
