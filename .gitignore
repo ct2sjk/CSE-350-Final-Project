@@ -3,4 +3,5 @@
 *.idea
 *_pycache_
 *.pyc
-*.pyc
+*__pycache__\UserInterface.cpython-310.pyc
+*__pycache__\SensorData.cpython-310.pyc
