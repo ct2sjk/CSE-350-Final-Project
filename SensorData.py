@@ -177,7 +177,7 @@ class graphData:
                 for obj in self.SDarr:
                     dati = self.parseDateTime(obj.date, obj.time)
                     dati += timedelta(minutes=obj.timeZ)
-                    d.append({'DateTime': self.parseDateTime(obj.date, obj.time),
+                    d.append({'DateTime': dati,
                               'TimeZ': obj.timeZ,
                               'Rest': obj.rest
                               })
@@ -325,7 +325,7 @@ class sensorData:
         h, mi, s = [int(x) for x in timeS.split(':')]
         dtS = datetime(y, m, d, h, mi, s)
 
-        if self.parseDateTime(self.SDarr[index].date, self.SDarr[index].time) == dtS and self.parseDateTime(self.SDarr[index].date, self.SDarr[index].time) >= dtS:
+        if self.parseDateTime(self.SDarr[index].date, self.SDarr[index].time) == dtS or self.parseDateTime(self.SDarr[index].date, self.SDarr[index].time) >= dtS:
             if self.parseDateTime(self.SDarr[index-1].date, self.SDarr[index-1].time) < dtS or self.parseDateTime(self.SDarr[index].date, self.SDarr[index].time) == dtS:
                 return index
             else:
@@ -400,7 +400,7 @@ class sensorData:
 
         indexS = self.recursiveSearch(DateS, TimeS)
         index = indexS
-        while self.parseDateTime(self.SDarr[index].date, self.SDarr[index].time) <= dtE:
+        while self.parseDateTime(self.SDarr[index].date, self.SDarr[index].time) < dtE:
             tempAvrg += self.SDarr[index].temp
             ACCMagAvrg += self.SDarr[index].ACCMag
             EDAAvrg += self.SDarr[index].EDA

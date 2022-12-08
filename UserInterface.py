@@ -214,11 +214,9 @@ class UserInterface(tk.Tk):
     def switchTimeSeries(self):
         self.callback()
         if self.timeShift == True:
-            self.gdTemp = self.gd
             self.gd.compileGraph()
             self.timeShift = False
         else:
-            self.gdTemp = self.gd
             self.gd.compileGraphTS()
             self.timeShift = True
         self.regraph()
@@ -251,6 +249,7 @@ class UserInterface(tk.Tk):
         TimeS = self.inputtxt3.get('1.0', 'end-1c')
         TimeE = self.inputtxt4.get('1.0', 'end-1c')
         self.callback()
+        self.gdTemp = self.gd
         self.gd = self.sd.queryGraph(DateS, DateE, TimeS, TimeE)
         self.regraph()        
 
