@@ -127,7 +127,7 @@ class graphData:
                 for obj in self.SDarr:
                     dati = self.parseDateTime(obj.date, obj.time)
                     dati += timedelta(minutes=obj.timeZ)
-                    d.append({'DateTime': self.parseDateTime(obj.date, obj.time),
+                    d.append({'DateTime': dati,
                               'TimeZ': obj.timeZ,
                               'ACC Magnitude': obj.ACCMag
                               })
@@ -137,7 +137,7 @@ class graphData:
                 for obj in self.SDarr:
                     dati = self.parseDateTime(obj.date, obj.time)
                     dati += timedelta(minutes=obj.timeZ)
-                    d.append({'DateTime': self.parseDateTime(obj.date, obj.time),
+                    d.append({'DateTime': dati,
                               'TimeZ': obj.timeZ,
                               'EDA': obj.EDA
                               })
@@ -147,7 +147,7 @@ class graphData:
                 for obj in self.SDarr:
                     dati = self.parseDateTime(obj.date, obj.time)
                     dati += timedelta(minutes=obj.timeZ)
-                    d.append({'DateTime': self.parseDateTime(obj.date, obj.time),
+                    d.append({'DateTime': dati,
                               'TimeZ': obj.timeZ,
                               'On Wrist': obj.onWrist
                               })
@@ -157,7 +157,7 @@ class graphData:
                 for obj in self.SDarr:
                     dati = self.parseDateTime(obj.date, obj.time)
                     dati += timedelta(minutes=obj.timeZ)
-                    d.append({'DateTime': self.parseDateTime(obj.date, obj.time),
+                    d.append({'DateTime': dati,
                               'TimeZ': obj.timeZ,
                               'Movement Intensity': obj.movInten
                               })
@@ -167,7 +167,7 @@ class graphData:
                 for obj in self.SDarr:
                     dati = self.parseDateTime(obj.date, obj.time)
                     dati += timedelta(minutes=obj.timeZ)
-                    d.append({'DateTime': self.parseDateTime(obj.date, obj.time),
+                    d.append({'DateTime': dati,
                               'TimeZ': obj.timeZ,
                               'Step Count': obj.stepCt
                               })
