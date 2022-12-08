@@ -217,11 +217,8 @@ class UserInterface(tk.Tk):
         Timeshift = Button(Compile_Frame, text="Timeshift", padx=10, pady=10, command=self.switchTimeSeries)
         Timeshift.pack(side=RIGHT, padx=10, pady=5)
 
-        def close():
-            self.quit()
-
         Quit = Button(Compile_Frame, text="  Quit  ",
-                      padx=10, pady=10, command=close)
+                      padx=10, pady=10, command=self.quit)
         Quit.pack(side=RIGHT, padx=10, pady=6)
 
         Query = Button(QueryFrame, text="Query", command=self.queryData)
@@ -240,6 +237,8 @@ class UserInterface(tk.Tk):
                                   height=20,
                                   width=60)
         self.outputtxt1.pack()
+        Delete = Button(Output_Frame, text="Delete", command=lambda: self.outputtxt1.delete(1.0, END))
+        Delete.pack()
 
         plt.show()
 
@@ -378,8 +377,7 @@ class UserInterface(tk.Tk):
             x='DateTime', y='Movement Intensity', ax=self.axMovInten)
         self.gd.dfStepCt.plot(x='DateTime', y='Step Count', ax=self.axStepCt)
         self.gd.dfRest.plot(x='DateTime', y='Rest', ax=self.axRest)
-        plt.show()
-    
+        plt.show()    
 
     def browseFileSD(self):
         # Add this to main project
