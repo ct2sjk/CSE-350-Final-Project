@@ -470,14 +470,3 @@ class sensorData:
         gd.compileGraph()
         return gd
 
-
-if __name__ == '__main__':
-    sd = sensorData('DummyData.csv', 'DummyData.csv')
-    sd.compileSensor()
-    print(sd.summarize('OnWrist'))
-    print(sd.aggregate('2019-09-20', '2019-09-20', '11:49:00', '11:52:00', False))
-    gdq = sd.queryGraph('2019-09-20', '2019-09-20', '11:49:00', '11:52:00')
-    print(gdq.dfEDA)
-    gd = sd.compileGraphData()
-    gd.compileGraphTS()
-    print(gd.dfTemp)
