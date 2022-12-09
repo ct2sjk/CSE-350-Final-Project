@@ -1,7 +1,3 @@
-"""
-Add default sd to be passed to UI object (pass by reference)
-Create as executable
-"""
 import SensorData as SD
 import UserInterface as UI
 
