@@ -263,7 +263,6 @@ class UserInterface(tk.Tk):
 
     def temp_summarize(self):
         # returnData = [sum, highest, lowest]
-        self.callback()
         returnData = self.sd.summarize('Temp')
         # format return data
         Temp_String = self.stringFormat("Temperature", returnData)
@@ -271,7 +270,6 @@ class UserInterface(tk.Tk):
 
     def acc_mag_summarize(self):
         # returnData = [sum, highest, lowest]
-        self.regraph()
         returnData = self.sd.summarize('ACCMagnitude')
         # format return data
         ACC_Mag_String = self.stringFormat("ACC_Magnitude", returnData)
