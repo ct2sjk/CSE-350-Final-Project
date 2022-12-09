@@ -21,7 +21,19 @@ The aggregate button gives you an aggregate report of all of the data
 
 The summarize button will summarize the data of a single graph
 
-There is also a slider button to adjust each of the subplots parameters 
+There is also a slider button to adjust each of the subplots parameters
+
+there is a swap button to swap between the graph data and the added sensordata and metadata on the graph
+
+there is a browse button for each of the Data CSVs sensordata and metadata having their own
+
+there is a Query button below four query text boxes from which we can search the datas date and time
+
+there is a Timeshift button if we need to shift the timezone from local to UTC
+
+there is a delete button on the General Output which deletes the output data that is printed from pressing summarize on each of the graphs
+
+
 
 # Activity Analyzer
 Initializes the program and creates the initial graphs. Responsible for loading the csv data into the file. 
